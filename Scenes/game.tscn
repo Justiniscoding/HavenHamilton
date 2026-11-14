@@ -33,4 +33,4 @@ tile_map_data = PackedByteArray("AAD2/wMAAAAAAAAAAAD3/wMAAAAAAAAAAAD4/wMAAAAAAAA
 tile_set = SubResource("TileSet_qxrlw")
 
 [node name="Node2D" parent="." unique_id=15822373 instance=ExtResource("3_wrm1d")]
-position = Vector2(38, 545)
+position = Vector2(179, 601)

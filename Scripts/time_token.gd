@@ -28,4 +28,4 @@ func _on_body_entered(body: Node2D) -> void:
 		hasBeenPickedUp = true
 		playerNode = body
 		$CollisionShape2D.set_deferred("disabled", true)
-		$Sprite2D.visible = false
+		$AnimatedSprite2D.visible = false
