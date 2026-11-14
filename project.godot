@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Haven Hamilton"
+run/main_scene="uid://dyn3itle8p414"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
