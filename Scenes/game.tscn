@@ -16,20 +16,22 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_qxrlw")
 
 [node name="Game" type="Node2D" unique_id=722572871]
+texture_filter = 1
 
 [node name="Player" parent="." unique_id=297062209 instance=ExtResource("1_ebmjs")]
-position = Vector2(226, 275)
+position = Vector2(261, 593)
 
 [node name="Player2" parent="." unique_id=1520999625 instance=ExtResource("1_ebmjs")]
-position = Vector2(791, 180)
+modulate = Color(1, 0.3019608, 0.29411766, 1)
+position = Vector2(98, 608)
 playerNumber = 2
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1575957073]
-zoom = Vector2(0.3, 0.3)
+position = Vector2(224, 559)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1057907369]
 tile_map_data = PackedByteArray("AAD2/wMAAAAAAAAAAAD3/wMAAAAAAAAAAAD4/wMAAAAAAAAAAAD5/wMAAAAAAAAAAAD6/wMAAAAAAAAAAAD7/wMAAAAAAAAAAAD8/wMAAAAAAAAAAAD9/wMAAAAAAAAAAAD+/wMAAAAAAAAAAAAMAP3/AAAAAAAAAAANAP3/AAAAAAAAAAAOAP3/AAAAAAAAAAAPAP3/AAAAAAAAAAAQAP3/AAAAAAAAAAARAP3/AAAAAAAAAAASAP3/AAAAAAAAAAATAP3/AAAAAAAAAAAUAP3/AAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAAKAAUAAAAAAAAAAAALAAUAAAAAAAAAAAAMAAUAAAAAAAAAAAANAAUAAAAAAAAAAAAOAAUAAAAAAAAAAAAPAAUAAAAAAAAAAAD9/wUAAAAAAAAAAAD+/wUAAAAAAAAAAAD//wUAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_qxrlw")
 
-[node name="Node2D" parent="." unique_id=15822373 instance=ExtResource("3_wrm1d")]
-position = Vector2(38, 545)
+[node name="TimeToken" parent="." unique_id=15822373 instance=ExtResource("3_wrm1d")]
+position = Vector2(179, 627)

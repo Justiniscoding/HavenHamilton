@@ -17,6 +17,10 @@ config/icon="res://icon.svg"
 
 [display]
 
+window/size/viewport_width=384
+window/size/viewport_height=256
+window/size/window_width_override=1526
+window/size/window_height_override=1024
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
@@ -69,6 +73,7 @@ down2={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

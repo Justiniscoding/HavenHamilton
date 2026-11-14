@@ -6,13 +6,7 @@ var teleTo
 var beenPlaced = false
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if hasBeenPickedUp:
 		if playerNode.name == "Player":
 			if Input.is_action_just_released("down1") and not beenPlaced:
@@ -28,17 +22,10 @@ func _process(delta: float) -> void:
 			if Input.is_action_just_pressed("down2") and beenPlaced:
 				playerNode.position = teleTo
 				queue_free()
-		
-	pass
-
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name.begins_with("Player"):
 		hasBeenPickedUp = true
 		playerNode = body
-		$CollisionShape2D.disabled = true
-		$Sprite2D.visible = false
-
-		
-		
-	pass # Replace with function body.
+		$CollisionShape2D.set_deferred("disabled", true)
+		$CollisionShape2D/AnimatedSprite2D.visible = false
