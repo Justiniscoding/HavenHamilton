@@ -3,6 +3,44 @@
 [ext_resource type="Script" uid="uid://bgpxdrk2k7myr" path="res://Scripts/time_token.gd" id="1_2ix4a"]
 [ext_resource type="Texture2D" uid="uid://c0x4hvy5mhgw1" path="res://Art/Time Token.png" id="2_2ix4a"]
 
+[sub_resource type="Animation" id="Animation_2ix4a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-0.5, -0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_y7djr"]
+resource_name = "rock"
+loop_mode = 1
+step = 0.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-0.5, -0.5), Vector2(-0.5, -10.5), Vector2(-0.5, -0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bru0b"]
+_data = {
+&"RESET": SubResource("Animation_2ix4a"),
+&"rock": SubResource("Animation_y7djr")
+}
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_4042a"]
 radius = 11.045361
 
@@ -101,15 +139,22 @@ animations = [{
 [node name="TimeToken" type="Area2D" unique_id=15822373]
 script = ExtResource("1_2ix4a")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1820336418]
+libraries/ = SubResource("AnimationLibrary_bru0b")
+autoplay = &"rock"
+speed_scale = 0.25
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=25971077]
 position = Vector2(-0.5, -0.5)
 shape = SubResource("CircleShape2D_4042a")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=387829673]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D" unique_id=387829673]
 texture_filter = 1
-scale = Vector2(-1, 1)
+position = Vector2(0.5, 0.5)
+rotation = 3.1415925
+scale = Vector2(1, -1)
 sprite_frames = SubResource("SpriteFrames_ou2wq")
 autoplay = "default"
-frame_progress = 0.5302956
+frame_progress = 0.9636284
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
