@@ -44,15 +44,35 @@ enum WeaponState{
 	READY
 }
 
+var weapons = {
+	short1 = {
+		charge = 18,
+		attack = 15,
+		cooldown = 10
+	},
+	short2 = {
+		charge = 8,
+		attack = 24,
+		cooldown = 12
+	},
+	range2 = {
+
+	},
+	range1 = {
+
+	}
+}
+
 var targetVel := Vector2.ZERO
 
 var weaponState = WeaponState.READY
+var didAttack = false
 
 func _ready() -> void:
 	pnum = str(playerNumber)
 
 	# fixes shader param issue
-	$Sprite2D.material = $Sprite2D.material.duplicate()
+	$AnimatedSprite2D.material = $AnimatedSprite2D.material.duplicate()
 
 func getCollider():
 	if $Weapon.has_overlapping_bodies():
@@ -66,40 +86,60 @@ func getCollider():
 func fight():
 	if currentAttack == Attacks.NONE and weaponState == WeaponState.READY:
 		if Input.is_action_just_pressed("short" + pnum):
-			startup.reset(3)
-			print("Starting")
+			$AnimatedSprite2D.play("short" + pnum)
+			startup.reset(weapons["short" + pnum].charge)
 			currentAttack = Attacks.SHORT
+			weaponState = WeaponState.CHARGING
+			print("charging")
+
+		if Input.is_action_just_pressed("range" + pnum):
+			$AnimatedSprite2D.play("range" + pnum)
+			startup.reset(weapons["range" + pnum].charge)
+			currentAttack = Attacks.RANGED
 			weaponState = WeaponState.CHARGING
 	
 	if weaponState == WeaponState.CHARGING and startup.can():
 		weaponState = WeaponState.ATTACKING
-		print("Attacking")
-		active.reset(5)
+		print("attacking")
+		if currentAttack == Attacks.SHORT:
+			active.reset(weapons["short" + pnum].attack)
+		else:
+			active.reset(weapons["range" + pnum].attack)
 
 	if weaponState == WeaponState.ATTACKING:
 		var player = getCollider()
 
-		if not player == null and not currentAttack == Attacks.NONE:
-			print("did attack")
-			currentAttack = Attacks.NONE
+		if not player == null and not currentAttack == Attacks.NONE and not didAttack:
+			didAttack = true
 
 			player.targetVel.y = -1000
-			player.targetVel.x = sign(position.x - player.position.x) * -1000
+			player.targetVel.x = 1000 if $AnimatedSprite2D.flip_h else -1000
 
 	
 	if weaponState == WeaponState.ATTACKING and active.can():
+		didAttack = false
+		print("on cooldown")
 		weaponState = WeaponState.COOLDOWN
-		print("cooling down")
-		end.reset(6)
+		if currentAttack == Attacks.SHORT:
+			end.reset(weapons["short" + pnum].cooldown)
+		else:
+			end.reset(weapons["range" + pnum].cooldown)
 	
 	if weaponState == WeaponState.COOLDOWN and end.can():
+		print("cooldown over")
 		weaponState = WeaponState.READY
 		currentAttack = Attacks.NONE
 
 
-
+var isJumping = false
 
 func _physics_process(delta: float) -> void:
+	startup.update(delta)
+	end.update(delta)
+	active.update(delta)
+
+	fight()
+
 	var direction = Input.get_axis("left" + pnum, "right" + pnum) * speed
 
 	if not is_on_floor():
@@ -108,22 +148,33 @@ func _physics_process(delta: float) -> void:
 	targetVel = lerp(targetVel, Vector2.ZERO, 0.2)
 
 	if direction != 0:
+		if is_on_floor() and currentAttack == Attacks.NONE and weaponState == WeaponState.READY and not didAttack:
+			$AnimatedSprite2D.play("run" + pnum)
 		velocity.x = lerp(velocity.x, direction, 0.25)
 	else:
+		if is_on_floor() and currentAttack == Attacks.NONE and weaponState == WeaponState.READY and not didAttack:
+			$AnimatedSprite2D.play("idle" + pnum)
 		velocity.x = lerp(velocity.x, 0.0, 0.25)
 
 	if velocity.x > 0:
-		$Sprite2D.flip_h = true
-		$Sprite2D.offset.x = 7
+		$AnimatedSprite2D.flip_h = true
+		$AnimatedSprite2D.offset.x = 7
+		$Weapon.scale.x = -1
+		$Weapon.position.x = 18
 	elif velocity.x < 0:
-		$Sprite2D.flip_h = false
-		$Sprite2D.offset.x = -7
+		$AnimatedSprite2D.flip_h = false
+		$AnimatedSprite2D.offset.x = -7
+		$Weapon.scale.x = 1
+		$Weapon.position.x = -4
 
 	if Input.is_action_just_pressed("up" + pnum):
 		if is_on_floor():
+			isJumping = true
+			$AnimatedSprite2D.play("jump" + pnum)
 			canDoubleJump = true
 			velocity.y = jump
 		elif canDoubleJump:
+			$AnimatedSprite2D.play("double_jump" + pnum)
 			canDoubleJump = false
 			velocity.y = doubleJumpSize
 	if not is_on_floor() and Input.is_action_just_released("up" + pnum) and canDoubleJump:
@@ -136,9 +187,5 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	velocity -= targetVel
-
-	startup.update(delta)
-	active.update(delta)
-	end.update(delta)
 
 	fight()
