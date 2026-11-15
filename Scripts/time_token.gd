@@ -7,10 +7,13 @@ var beenPlaced = false
 
 var debounce = 0
 
+@export var original := false
+
 var isTeleporting = false
 
 func _ready() -> void:
-	$AudioStreamPlayer2D.play()
+	if not original:
+		$AudioStreamPlayer2D.play()
 
 
 func teleport() -> void:

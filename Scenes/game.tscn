@@ -161,6 +161,7 @@ polygon = PackedVector2Array(181, 8, 186, 3, 188, 2, 196, 2, 197, 1, 199, 1, 200
 
 [node name="TimeToken" parent="." unique_id=15822373 instance=ExtResource("3_wrm1d")]
 position = Vector2(10, 47)
+original = true
 
 [node name="DeadZone" type="Area2D" parent="." unique_id=1461938756]
 
