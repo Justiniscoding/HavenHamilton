@@ -499,7 +499,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"range1",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 0.5,
@@ -517,7 +517,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_36dho")
 }, {
-"duration": 1.0,
+"duration": 3.0,
 "texture": SubResource("AtlasTexture_yh6i2")
 }],
 "loop": 0,
@@ -693,6 +693,4 @@ material = SubResource("ShaderMaterial_vgqql")
 position = Vector2(7, 0)
 sprite_frames = SubResource("SpriteFrames_v0iea")
 animation = &"range2"
-frame = 5
-frame_progress = 1.0
 offset = Vector2(-7, 0)

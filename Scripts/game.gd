@@ -18,8 +18,8 @@ func hpChange(playerNum, _amount):
 	else:
 		tween.tween_property($Control/Boris, "value", Global.p1hp, 1.5)
 	tween.play()
-	# $Camera2D/Renee.value = Global.p1hp
-	# $Camera2D/Boris.value = Global.p2hp
+
+var startDelay = 2
 
 func _process(delta: float) -> void:
 	timePerToken -= delta
@@ -29,4 +29,10 @@ func _process(delta: float) -> void:
 		timeToken.position.x = (randf() * 550) - 275
 		timeToken.position.y = 50
 		timePerToken = 8 + randf() * 4
-		
+	startDelay -= delta
+
+	if startDelay <= 0:
+		$"Time Demon".modulate.a += (delta) * 0.25
+
+		if $"Time Demon".modulate.a >= 1:
+			set_process(false)

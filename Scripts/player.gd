@@ -6,7 +6,7 @@ var fireballScene = preload("res://Scenes/fireball.tscn")
 var lightningScene = preload("res://Scenes/lightning.tscn")
 
 var gravity = 800
-var speed = 300
+var speed = 250
 var jump = -400
 var doubleJumpSize = jump * 0.75
 
@@ -61,14 +61,14 @@ var weapons = {
 		cooldown = 12
 	},
 	range2 = {
-		charge = 12,
-		attack = 36,
-		cooldown = 12
+		charge = 3,
+		attack = 12,
+		cooldown = 6
 	},
 	range1 = {
 		charge = 7,
 		attack = 24,
-		cooldown = 12
+		cooldown = 36
 	}
 }
 
@@ -186,7 +186,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		direction *= 0.75
 
-	if currentAttack == Attacks.NONE:
+	if currentAttack == Attacks.NONE or weaponState == WeaponState.READY or weaponState == WeaponState.COOLDOWN:
 		forcedDirection = 0
 
 	targetVel = lerp(targetVel, Vector2.ZERO, 0.2)
@@ -194,22 +194,23 @@ func _physics_process(delta: float) -> void:
 	if direction != 0:
 		if is_on_floor() and currentAttack == Attacks.NONE and weaponState == WeaponState.READY and not didAttack:
 			$AnimatedSprite2D.play("run" + pnum)
-		velocity.x = lerp(velocity.x, direction, 0.25)
+		velocity.x = lerp(velocity.x, direction, 0.15)
 	else:
 		if is_on_floor() and currentAttack == Attacks.NONE and weaponState == WeaponState.READY and not didAttack:
 			$AnimatedSprite2D.play("idle" + pnum)
-		velocity.x = lerp(velocity.x, 0.0, 0.25)
+		velocity.x = lerp(velocity.x, 0.0, 0.15)
 
-	if velocity.x > 0 and forcedDirection != -1:
+	if direction > 0 and forcedDirection != -1:
 		$AnimatedSprite2D.flip_h = true
 		$AnimatedSprite2D.offset.x = 7
 		$Weapon.scale.x = -1
 		$Weapon.position.x = 18
-	elif velocity.x < 0 and forcedDirection != 1:
+	elif direction < 0 and forcedDirection != 1:
 		$AnimatedSprite2D.flip_h = false
 		$AnimatedSprite2D.offset.x = -7
 		$Weapon.scale.x = 1
 		$Weapon.position.x = -4
+
 
 	if Input.is_action_just_pressed("up" + pnum):
 		if is_on_floor():
