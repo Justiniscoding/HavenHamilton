@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://dyn3itle8p414"]
 
 [ext_resource type="PackedScene" uid="uid://6b46cgob32hp" path="res://Scenes/player.tscn" id="1_ebmjs"]
+[ext_resource type="AudioStream" uid="uid://b25o731vuv7wv" path="res://Sound Effects/lumora_studios-pixel-jump-319167.mp3" id="1_wowpa"]
 [ext_resource type="PackedScene" uid="uid://b88qmaxe3ua7i" path="res://Scenes/TimeToken.tscn" id="3_wrm1d"]
 [ext_resource type="Texture2D" uid="uid://da2opakfavn2u" path="res://Art/Top Layer Ground.png" id="4_3dryh"]
 [ext_resource type="AudioStream" uid="uid://dl3sxhtnvy34y" path="res://Music/MainThemeLoop.wav" id="5_1l0tm"]
@@ -36,6 +37,10 @@ sources/0 = SubResource("TileSetAtlasSource_wrm1d")
 
 [node name="Game" type="Node2D" unique_id=722572871]
 texture_filter = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1348945278]
+position = Vector2(261, 593)
+stream = ExtResource("1_wowpa")
 
 [node name="Player" parent="." unique_id=297062209 instance=ExtResource("1_ebmjs")]
 position = Vector2(261, 593)
