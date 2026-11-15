@@ -2,32 +2,10 @@
 
 [ext_resource type="Script" uid="uid://d0ugddjnsxr3k" path="res://Scenes/countdown.gd" id="1_hpfhb"]
 [ext_resource type="AudioStream" uid="uid://b83fhoieai3sf" path="res://Music/MainThemeIntro.wav" id="2_0r5b0"]
-[ext_resource type="Texture2D" uid="uid://duave01lsr3yu" path="res://Art/Countdown.png" id="3_5jmf5"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xtcw7"]
-atlas = ExtResource("3_5jmf5")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6qswr"]
-atlas = ExtResource("3_5jmf5")
-region = Rect2(128, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1o5hb"]
-atlas = ExtResource("3_5jmf5")
-region = Rect2(256, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4042a"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xtcw7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6qswr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1o5hb")
-}],
+"frames": [],
 "loop": 0,
 "name": &"default",
 "speed": 1.0
@@ -43,5 +21,4 @@ stream = ExtResource("2_0r5b0")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=324232451]
 sprite_frames = SubResource("SpriteFrames_4042a")
 autoplay = "default"
-frame = 2
 frame_progress = 1.0

@@ -1,8 +1,8 @@
 extends Node2D
 
 func _ready() -> void:
-	$Camera2D/Renee.value = 100
-	$Camera2D/Boris.value = 100
+	$Control/Renee.value = 100
+	$Control/Boris.value = 100
 
 	Global.connect("hpChange", hpChange)
 
