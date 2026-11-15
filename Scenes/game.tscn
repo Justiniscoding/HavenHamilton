@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://6b46cgob32hp" path="res://Scenes/player.tscn" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://b88qmaxe3ua7i" path="res://Scenes/TimeToken.tscn" id="3_wrm1d"]
 [ext_resource type="Texture2D" uid="uid://da2opakfavn2u" path="res://Art/Top Layer Ground.png" id="4_3dryh"]
+[ext_resource type="AudioStream" uid="uid://dl3sxhtnvy34y" path="res://Music/MainThemeLoop.wav" id="5_1l0tm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wrm1d"]
 texture = ExtResource("4_3dryh")
@@ -51,3 +52,7 @@ position = Vector2(179, 627)
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1552162095]
 tile_map_data = PackedByteArray("AAABABUAAAAAAAAAAAACABUAAAAAAAAAAAADABUAAAAAAAAAAAAEABUAAAAAAAAAAAAFABUAAAAAAAAAAAAGABUAAAAAAAAAAAAHABUAAAAAAAAAAAAIABUAAAAAAAAAAAAJABUAAAAAAAAAAAAKABUAAAAAAAAAAAALABUAAAAAAAAAAAAMABUAAAAAAAAAAAANABUAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_3dryh")
+
+[node name="MainThemeLoopPlayer" type="AudioStreamPlayer2D" parent="." unique_id=441424644]
+stream = ExtResource("5_1l0tm")
+autoplay = true
