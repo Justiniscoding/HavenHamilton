@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://dkgbqa2avgsjk"]
+
+[ext_resource type="Texture2D" uid="uid://crti8ml8blv0o" path="res://Art/Boris Wins.png" id="1_vcm4s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wm1qo"]
+atlas = ExtResource("1_vcm4s")
+region = Rect2(0, 0, 320, 224)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8vehc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wm1qo")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4kcx"]
+atlas = ExtResource("1_vcm4s")
+region = Rect2(0, 224, 320, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nv6o"]
+atlas = ExtResource("1_vcm4s")
+region = Rect2(320, 224, 320, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5q2ct"]
+atlas = ExtResource("1_vcm4s")
+region = Rect2(640, 224, 320, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_71b48"]
+atlas = ExtResource("1_vcm4s")
+region = Rect2(960, 224, 320, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4arvx"]
+atlas = ExtResource("1_vcm4s")
+region = Rect2(1280, 224, 320, 224)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4042a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4kcx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nv6o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5q2ct")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71b48")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4arvx")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="Node2D" type="Node2D" unique_id=88262683]
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=761939267]
+sprite_frames = SubResource("SpriteFrames_8vehc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1375326994]
+sprite_frames = SubResource("SpriteFrames_4042a")
+autoplay = "default"
+frame = 4
+frame_progress = 1.0
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1666576540]
+zoom = Vector2(1.2, 1.2)

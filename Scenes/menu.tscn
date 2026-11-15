@@ -119,6 +119,7 @@ stream = ExtResource("1_1rerr")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1510580165]
 scale = Vector2(0.5, 0.5)
+zoom = Vector2(1.2, 1.2)
 
 [node name="StartScene" type="Sprite2D" parent="." unique_id=993126360]
 texture = ExtResource("4_158mb")

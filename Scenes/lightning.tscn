@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dbketk15xrekl" path="res://Art/Lightning Bolt.png" id="2_7ouyy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ouyy"]
-size = Vector2(26, 83)
+size = Vector2(19, 70)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_41j16"]
 atlas = ExtResource("2_7ouyy")
@@ -67,8 +67,9 @@ animations = [{
 script = ExtResource("1_wca04")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1169388123]
-position = Vector2(1, -0.5)
+position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_7ouyy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=991060253]
 sprite_frames = SubResource("SpriteFrames_xs5hf")
+frame = 3

@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://dw8n506tj5jrm"]
+
+[ext_resource type="Texture2D" uid="uid://dsmpe36mk8vj7" path="res://Art/Renee Wins.png" id="1_dnio8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8qh8"]
+atlas = ExtResource("1_dnio8")
+region = Rect2(0, 0, 320, 224)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8vehc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8qh8")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kw5cb"]
+atlas = ExtResource("1_dnio8")
+region = Rect2(0, 224, 320, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ta6db"]
+atlas = ExtResource("1_dnio8")
+region = Rect2(320, 224, 320, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_87kqo"]
+atlas = ExtResource("1_dnio8")
+region = Rect2(640, 224, 320, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdam7"]
+atlas = ExtResource("1_dnio8")
+region = Rect2(960, 224, 320, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tgwxb"]
+atlas = ExtResource("1_dnio8")
+region = Rect2(1280, 224, 320, 224)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4042a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kw5cb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ta6db")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_87kqo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdam7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tgwxb")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="Node2D" type="Node2D" unique_id=149586615]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=480088947]
+scale = Vector2(0.75, 0.75)
+zoom = Vector2(1.2, 1.2)
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=1704843996]
+sprite_frames = SubResource("SpriteFrames_8vehc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=273469476]
+sprite_frames = SubResource("SpriteFrames_4042a")
+autoplay = "default"
+frame = 4
+frame_progress = 1.0

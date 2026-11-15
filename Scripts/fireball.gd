@@ -13,7 +13,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	timer += delta
 
-	if timer > 1:
+	if timer > 1.5:
 		$AnimatedSprite2D.play("explode")
 		set_physics_process(false)
 		$AnimatedSprite2D.connect("animation_finished", func():
@@ -26,6 +26,7 @@ func _physics_process(delta: float) -> void:
 				$AnimatedSprite2D.play("explode")
 				set_physics_process(false)
 				body.targetVel.x = 400 * direction
+				Global.remove_hp(2, 5)
 				$AnimatedSprite2D.connect("animation_finished", func():
 					queue_free())
 				return

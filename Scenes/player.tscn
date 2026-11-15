@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://6b46cgob32hp"]
 
 [ext_resource type="Script" uid="uid://djqet4f2r50s5" path="res://Scripts/player.gd" id="1_v0iea"]
-[ext_resource type="Shader" uid="uid://p8227oh1i16q" path="res://Scenes/player.gdshader" id="2_6t5aa"]
+[ext_resource type="Shader" uid="uid://b1bw4a757awso" path="res://Scenes/player.gdshader" id="2_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://qh0iy4ujoyt8" path="res://Art/Player 2.png" id="2_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://decyh63nmkwou" path="res://Art/Player 1.png" id="3_vgqql"]
 
@@ -499,7 +499,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"range1",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 0.5,
@@ -517,7 +517,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_36dho")
 }, {
-"duration": 1.0,
+"duration": 3.0,
 "texture": SubResource("AtlasTexture_yh6i2")
 }],
 "loop": 0,
@@ -693,6 +693,4 @@ material = SubResource("ShaderMaterial_vgqql")
 position = Vector2(7, 0)
 sprite_frames = SubResource("SpriteFrames_v0iea")
 animation = &"range2"
-frame = 5
-frame_progress = 1.0
 offset = Vector2(-7, 0)

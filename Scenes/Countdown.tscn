@@ -2,14 +2,8 @@
 
 [ext_resource type="Script" uid="uid://d0ugddjnsxr3k" path="res://Scenes/countdown.gd" id="1_hpfhb"]
 [ext_resource type="AudioStream" uid="uid://b83fhoieai3sf" path="res://Music/MainThemeIntro.wav" id="2_0r5b0"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_4042a"]
-animations = [{
-"frames": [],
-"loop": 0,
-"name": &"default",
-"speed": 1.0
-}]
+[ext_resource type="Texture2D" uid="uid://d235khmttr0oe" path="res://Art/Start Loading Bar Vine.png" id="3_xtcw7"]
+[ext_resource type="Texture2D" uid="uid://4lk7edr8gan" path="res://Art/Start Loading Bar Progress.png" id="4_6qswr"]
 
 [node name="Node2D" type="Node2D" unique_id=1806530029]
 script = ExtResource("1_hpfhb")
@@ -18,7 +12,14 @@ script = ExtResource("1_hpfhb")
 position = Vector2(-1, 1)
 stream = ExtResource("2_0r5b0")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=324232451]
-sprite_frames = SubResource("SpriteFrames_4042a")
-autoplay = "default"
-frame_progress = 1.0
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=2070194852]
+offset_left = -32.0
+offset_top = -15.0
+offset_right = 32.0
+offset_bottom = 25.0
+texture_under = ExtResource("3_xtcw7")
+texture_progress = ExtResource("4_6qswr")
+texture_progress_offset = Vector2(12, 11)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=8338288]
+zoom = Vector2(2, 2)
