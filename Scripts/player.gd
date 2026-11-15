@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 @export var playerNumber: int = 1
 
+var fireballScene = preload("res://Scenes/fireball.tscn")
+var lightningScene = preload("res://Scenes/lightning.tscn")
+
 var gravity = 800
 var speed = 300
 var jump = -400
@@ -28,6 +31,8 @@ class timer:
 var startup = timer.new() 
 var active = timer.new()
 var end = timer.new()
+
+var stun = timer.new()
 
 enum Attacks {
 	NONE,
@@ -56,10 +61,14 @@ var weapons = {
 		cooldown = 12
 	},
 	range2 = {
-
+		charge = 12,
+		attack = 36,
+		cooldown = 12
 	},
 	range1 = {
-
+		charge = 7,
+		attack = 24,
+		cooldown = 12
 	}
 }
 
@@ -107,13 +116,34 @@ func fight():
 			active.reset(weapons["range" + pnum].attack)
 
 	if weaponState == WeaponState.ATTACKING:
-		var player = getCollider()
+		if currentAttack == Attacks.SHORT:
+			var player = getCollider()
 
-		if not player == null and not currentAttack == Attacks.NONE and not didAttack:
-			didAttack = true
+			if not player == null and not currentAttack == Attacks.NONE and not didAttack:
+				didAttack = true
 
-			player.targetVel.y = -1000
-			player.targetVel.x = 1000 if $AnimatedSprite2D.flip_h else -1000
+				player.targetVel.y = -1000
+				player.targetVel.x = 1000 if $AnimatedSprite2D.flip_h else -1000
+		else:
+			if not didAttack:
+				didAttack = true
+				if playerNumber == 1:
+					var fireball = fireballScene.instantiate()
+					get_parent().add_child(fireball)
+
+					var currDurr = 1 if $AnimatedSprite2D.flip_h else -1
+
+					fireball.position = position + Vector2(currDurr * 20, -10)
+
+					fireball.direction = currDurr
+				if playerNumber == 2:
+					var lightning = lightningScene.instantiate()
+					get_parent().add_child(lightning)
+
+					var currDurr = 1 if $AnimatedSprite2D.flip_h else -1
+
+					lightning.position = position + Vector2(currDurr * 200, -30)
+
 
 	
 	if weaponState == WeaponState.ATTACKING and active.can():
@@ -137,6 +167,11 @@ func _physics_process(delta: float) -> void:
 	startup.update(delta)
 	end.update(delta)
 	active.update(delta)
+	stun.update(delta)
+
+	if not stun.can():
+		$AnimatedSprite2D.play("idle1")
+		return
 
 	fight()
 

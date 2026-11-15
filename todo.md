@@ -1,0 +1,2 @@
+- stun frames after hit
+- locked direction after jump
