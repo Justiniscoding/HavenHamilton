@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://dyn3itle8p414"]
 
 [ext_resource type="PackedScene" uid="uid://6b46cgob32hp" path="res://Scenes/player.tscn" id="1_ebmjs"]
-[ext_resource type="AudioStream" uid="uid://b25o731vuv7wv" path="res://Sound Effects/lumora_studios-pixel-jump-319167.mp3" id="1_wowpa"]
 [ext_resource type="Script" uid="uid://oho1sh82b3xk" path="res://Scripts/game.gd" id="1_v158k"]
+[ext_resource type="AudioStream" uid="uid://b25o731vuv7wv" path="res://Sound Effects/lumora_studios-pixel-jump-319167.mp3" id="1_wowpa"]
 [ext_resource type="PackedScene" uid="uid://b88qmaxe3ua7i" path="res://Scenes/TimeToken.tscn" id="3_wrm1d"]
 [ext_resource type="Texture2D" uid="uid://da2opakfavn2u" path="res://Art/Top Layer Ground.png" id="4_3dryh"]
 [ext_resource type="AudioStream" uid="uid://dl3sxhtnvy34y" path="res://Music/MainThemeLoop.wav" id="5_1l0tm"]
