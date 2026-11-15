@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bgpxdrk2k7myr" path="res://Scripts/time_token.gd" id="1_2ix4a"]
 [ext_resource type="Texture2D" uid="uid://c0x4hvy5mhgw1" path="res://Art/Time Token.png" id="2_2ix4a"]
+[ext_resource type="AudioStream" uid="uid://dj57phtugwn2j" path="res://Sound Effects/freesound_community-old-church-bell-6298.mp3" id="3_y7djr"]
 
 [sub_resource type="Animation" id="Animation_2ix4a"]
 length = 0.001
@@ -156,5 +157,8 @@ scale = Vector2(1, -1)
 sprite_frames = SubResource("SpriteFrames_ou2wq")
 autoplay = "default"
 frame_progress = 0.12603214
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1512807651]
+stream = ExtResource("3_y7djr")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

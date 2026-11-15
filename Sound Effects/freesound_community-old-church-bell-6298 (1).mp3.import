@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bp6yf1lpk7khc"
+path="res://.godot/imported/freesound_community-old-church-bell-6298 (1).mp3-3e88c913c64c216a0516e8c550925e3b.mp3str"
+
+[deps]
+
+source_file="res://Sound Effects/freesound_community-old-church-bell-6298 (1).mp3"
+dest_files=["res://.godot/imported/freesound_community-old-church-bell-6298 (1).mp3-3e88c913c64c216a0516e8c550925e3b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

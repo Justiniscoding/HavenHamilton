@@ -50,5 +50,6 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.name.begins_with("Player"):
 		hasBeenPickedUp = true
 		playerNode = body
+		$AudioStreamPlayer2D.play()
 		$CollisionShape2D.set_deferred("disabled", true)
 		$CollisionShape2D/AnimatedSprite2D.visible = false
