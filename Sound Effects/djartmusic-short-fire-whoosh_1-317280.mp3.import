@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dkfgrptqkaxw3"
+path="res://.godot/imported/djartmusic-short-fire-whoosh_1-317280.mp3-5669773346c6ac189de70a72e392b638.mp3str"
+
+[deps]
+
+source_file="res://Sound Effects/djartmusic-short-fire-whoosh_1-317280.mp3"
+dest_files=["res://.godot/imported/djartmusic-short-fire-whoosh_1-317280.mp3-5669773346c6ac189de70a72e392b638.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

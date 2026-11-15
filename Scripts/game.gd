@@ -11,13 +11,24 @@ func _ready() -> void:
 
 func hpChange(playerNum, _amount):
 	var tween: Tween = get_tree().create_tween()
-	print(Global.p1hp)
-	print(Global.p2hp)
 	if playerNum == 2:
-		tween.tween_property($Control/Renee, "value", Global.p2hp, 1.5)
+		# tween.tween_property($Control/Renee, "value", Global.p2hp, 0.5)
+		$Player2.modulate = Color8(255, 0, 0, 255.0)
+	
+		get_tree().create_timer(0.5).connect("timeout", func():
+			$Player2.modulate = Color8(255, 255, 255))
 	else:
-		tween.tween_property($Control/Boris, "value", Global.p1hp, 1.5)
-	tween.play()
+		tween.tween_property($Control/Boris, "value", Global.p1hp, 0.5)
+		$Player.modulate = Color8(255, 0, 0)
+		get_tree().create_timer(0.5).connect("timeout", func():
+			$Player.modulate = Color8(255, 255, 255))
+	# tween.play()
+
+	await tween.finished
+	if Global.p1hp <= 0:
+		get_tree().change_scene_to_file("res://Scenes/ReneeWins.tscn")
+	if Global.p2hp <= 0:
+		get_tree().change_scene_to_file("res://Scenes/BorrisWins.tscn")
 
 var startDelay = 2
 
@@ -28,11 +39,16 @@ func _process(delta: float) -> void:
 		add_child(timeToken)
 		timeToken.position.x = (randf() * 550) - 275
 		timeToken.position.y = 50
-		timePerToken = 8 + randf() * 4
+		timePerToken = 10 + randf() * 8
 	startDelay -= delta
 
 	if startDelay <= 0:
 		$"Time Demon".modulate.a += (delta) * 0.25
-
-		if $"Time Demon".modulate.a >= 1:
-			set_process(false)
+		$"Time Demon".rotation_degrees += delta * 5
+	
+	if $DeadZone.has_overlapping_bodies():
+		for body in $DeadZone.get_overlapping_bodies():
+			if body.name == "Player":
+				get_tree().change_scene_to_file("res://Scenes/ReneeWins.tscn")
+			if body.name == "Player2":
+				get_tree().change_scene_to_file("res://Scenes/BorrisWins.tscn")

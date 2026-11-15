@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dkgbqa2avgsjk"]
 
+[ext_resource type="Script" uid="uid://b8wqsa1mdb50h" path="res://Scripts/win.gd" id="1_v4kcx"]
 [ext_resource type="Texture2D" uid="uid://crti8ml8blv0o" path="res://Art/Boris Wins.png" id="1_vcm4s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wm1qo"]
@@ -61,6 +62,7 @@ animations = [{
 }]
 
 [node name="Node2D" type="Node2D" unique_id=88262683]
+script = ExtResource("1_v4kcx")
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=761939267]
 sprite_frames = SubResource("SpriteFrames_8vehc")

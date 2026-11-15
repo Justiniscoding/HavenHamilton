@@ -7,9 +7,17 @@ var beenPlaced = false
 
 var debounce = 0
 
+@export var original := false
+
 var isTeleporting = false
 
+func _ready() -> void:
+	if not original:
+		$AudioStreamPlayer2D.play()
+
+
 func teleport() -> void:
+	playerNode.hasTime = false
 	isTeleporting = true
 	playerNode.get_node("AnimatedSprite2D").material.set_shader_parameter("enabled", true)
 
@@ -35,7 +43,7 @@ func _process(delta: float) -> void:
 		if playerNode.name == "Player":
 			if Input.is_action_just_released("down1") and not beenPlaced:
 				teleTo = playerNode.position
-				debounce = 1
+				debounce = 0.5
 				beenPlaced = true
 			elif Input.is_action_just_released("down1") and beenPlaced and debounce < 0:
 				teleport()
@@ -43,7 +51,7 @@ func _process(delta: float) -> void:
 			if Input.is_action_just_released("down2") and not beenPlaced:
 				teleTo = playerNode.position
 				beenPlaced = true
-				debounce = 1
+				debounce = 0.5
 			elif Input.is_action_just_released("down2") and beenPlaced and debounce < 0:
 				teleport()
 
@@ -51,6 +59,8 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.name.begins_with("Player"):
 		hasBeenPickedUp = true
 		playerNode = body
-		$AudioStreamPlayer2D.play()
 		$CollisionShape2D.set_deferred("disabled", true)
 		$CollisionShape2D/AnimatedSprite2D.visible = false
+		if body.hasTime:
+			queue_free()
+		body.hasTime = true

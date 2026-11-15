@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 @export var playerNumber: int = 1
 
+var hammersmash = load("res://Sound Effects/hammersmash.mp3")
+var swordswipe  = load("res://Sound Effects/swordswipe.mp3")
+
 var fireballScene = preload("res://Scenes/fireball.tscn")
 var lightningScene = preload("res://Scenes/lightning.tscn")
 
@@ -40,6 +43,8 @@ enum Attacks {
 	RANGED
 }
 
+var hasTime = false
+
 var currentAttack = Attacks.NONE
 
 enum WeaponState{
@@ -51,24 +56,24 @@ enum WeaponState{
 
 var weapons = {
 	short1 = {
-		charge = 18,
-		attack = 15,
-		cooldown = 10
+		charge = 7.5,
+		attack = 10,
+		cooldown = 15
 	},
 	short2 = {
-		charge = 8,
-		attack = 24,
-		cooldown = 12
+		charge = 5,
+		attack = 15,
+		cooldown = 5
 	},
 	range2 = {
 		charge = 3,
 		attack = 12,
-		cooldown = 6
+		cooldown = 36
 	},
 	range1 = {
 		charge = 7,
 		attack = 24,
-		cooldown = 36
+		cooldown = 10
 	}
 }
 
@@ -84,6 +89,8 @@ func _ready() -> void:
 
 	# fixes shader param issue
 	$AnimatedSprite2D.material = $AnimatedSprite2D.material.duplicate()
+
+	$AnimatedSprite2D.play("idle" + pnum)
 
 func getCollider():
 	if $Weapon.has_overlapping_bodies():
@@ -116,6 +123,16 @@ func fight():
 		print("attacking")
 		if currentAttack == Attacks.SHORT:
 			active.reset(weapons["short" + pnum].attack)
+			var audio = AudioStreamPlayer.new()
+			if playerNumber == 1:
+				audio.stream = swordswipe
+				audio.volume_db = 5
+			else:
+				audio.stream = hammersmash
+			add_child(audio)
+			audio.play()
+			audio.connect("finished", func():
+				audio.queue_free())
 		else:
 			active.reset(weapons["range" + pnum].attack)
 
@@ -127,9 +144,10 @@ func fight():
 				didAttack = true
 
 				Global.remove_hp(1 if playerNumber == 2 else 2, 3)
+				
 
-				player.targetVel.y = -1000
-				player.targetVel.x = 1000 if $AnimatedSprite2D.flip_h else -1000
+				player.targetVel.y = -1500
+				player.targetVel.x = 1500 if $AnimatedSprite2D.flip_h else -1500
 		else:
 			if not didAttack:
 				didAttack = true
@@ -148,7 +166,7 @@ func fight():
 
 					var currDurr = 1 if $AnimatedSprite2D.flip_h else -1
 
-					lightning.position = position + Vector2(currDurr * 200, -30)
+					lightning.position = position + Vector2(currDurr * 150, -30)
 
 
 	
@@ -175,13 +193,13 @@ func _physics_process(delta: float) -> void:
 	active.update(delta)
 	stun.update(delta)
 
-	if not stun.can():
-		$AnimatedSprite2D.play("idle1")
-		return
-
-	fight()
+	if stun.can():
+		fight()
 
 	var direction = Input.get_axis("left" + pnum, "right" + pnum) * speed
+
+	if not stun.can():
+		direction = 0
 
 	if not is_on_floor():
 		direction *= 0.75

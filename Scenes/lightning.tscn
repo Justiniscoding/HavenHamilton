@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bf4x2q5l3sc7g" path="res://Scripts/lightning.gd" id="1_wca04"]
 [ext_resource type="Texture2D" uid="uid://dbketk15xrekl" path="res://Art/Lightning Bolt.png" id="2_7ouyy"]
+[ext_resource type="AudioStream" uid="uid://e2oxke2bj6y3" path="res://Sound Effects/lightning.mp3" id="3_41j16"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ouyy"]
 size = Vector2(19, 70)
@@ -73,3 +74,7 @@ shape = SubResource("RectangleShape2D_7ouyy")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=991060253]
 sprite_frames = SubResource("SpriteFrames_xs5hf")
 frame = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=185689614]
+stream = ExtResource("3_41j16")
+volume_db = -5.0
