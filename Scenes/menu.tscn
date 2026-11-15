@@ -2,9 +2,119 @@
 
 [ext_resource type="AudioStream" uid="uid://oyehbj16pdlg" path="res://Music/TitleTheme - 2026-11-15, 12.19 AM.wav" id="1_1rerr"]
 [ext_resource type="Script" uid="uid://cqpodwer7mah7" path="res://Scripts/menu.gd" id="1_xhh6f"]
+[ext_resource type="Texture2D" uid="uid://c0x4hvy5mhgw1" path="res://Art/Time Token.png" id="2_cayip"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_158mb"]
+atlas = ExtResource("2_cayip")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwsa2"]
+atlas = ExtResource("2_cayip")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jsrd8"]
+atlas = ExtResource("2_cayip")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbdvm"]
+atlas = ExtResource("2_cayip")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3rjx"]
+atlas = ExtResource("2_cayip")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6swd7"]
+atlas = ExtResource("2_cayip")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qvly"]
+atlas = ExtResource("2_cayip")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfqti"]
+atlas = ExtResource("2_cayip")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8i7c"]
+atlas = ExtResource("2_cayip")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23t3j"]
+atlas = ExtResource("2_cayip")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ph6h"]
+atlas = ExtResource("2_cayip")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ti5v"]
+atlas = ExtResource("2_cayip")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8vehc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_158mb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwsa2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jsrd8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbdvm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3rjx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6swd7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7qvly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfqti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g8i7c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23t3j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ph6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ti5v")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 1.0
+}]
 
 [node name="Menu" type="Node2D" unique_id=1605334410]
 script = ExtResource("1_xhh6f")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=178168030]
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_8vehc")
+autoplay = "default"
+frame = 3
+frame_progress = 0.12888095
+
+[node name="Label" type="Label" parent="." unique_id=1198176510]
+offset_left = -69.0
+offset_top = -45.0
+offset_right = 81.0
+offset_bottom = -22.0
+text = "Press Enter to Start"
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1607523533]
 stream = ExtResource("1_1rerr")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1510580165]
+scale = Vector2(0.5, 0.5)
