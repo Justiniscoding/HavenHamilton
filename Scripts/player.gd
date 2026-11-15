@@ -177,13 +177,13 @@ func _physics_process(delta: float) -> void:
 	active.update(delta)
 	stun.update(delta)
 
-	if not stun.can():
-		$AnimatedSprite2D.play("idle1")
-		return
-
-	fight()
+	if stun.can():
+		fight()
 
 	var direction = Input.get_axis("left" + pnum, "right" + pnum) * speed
+
+	if not stun.can():
+		direction = 0
 
 	if not is_on_floor():
 		direction *= 0.75

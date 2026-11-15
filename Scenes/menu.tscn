@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dhafs15qqx18u"]
 
 [ext_resource type="AudioStream" uid="uid://oyehbj16pdlg" path="res://Music/TitleTheme - 2026-11-15, 12.19 AM.wav" id="1_1rerr"]
-[ext_resource type="Script" uid="uid://cqpodwer7mah7" path="res://Scripts/menu.gd" id="1_xhh6f"]
+[ext_resource type="Script" uid="uid://cp1al4vk33hi8" path="res://Scripts/menu.gd" id="1_xhh6f"]
 [ext_resource type="Texture2D" uid="uid://c0x4hvy5mhgw1" path="res://Art/Time Token.png" id="2_cayip"]
 [ext_resource type="Texture2D" uid="uid://bx613aaaryoks" path="res://Art/Start Scene.png" id="4_158mb"]
 
@@ -129,6 +129,14 @@ offset_left = -113.0
 offset_top = 36.0
 offset_right = -36.0
 offset_bottom = 66.0
+mouse_default_cursor_shape = 2
 flat = true
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1668835231]
+offset_left = -160.0
+offset_top = 94.0
+offset_right = -46.0
+offset_bottom = 134.0
+color = Color(0.21568628, 0.5803922, 0.43137255, 1)
 
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

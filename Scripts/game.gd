@@ -11,13 +11,17 @@ func _ready() -> void:
 
 func hpChange(playerNum, _amount):
 	var tween: Tween = get_tree().create_tween()
-	print(Global.p1hp)
-	print(Global.p2hp)
 	if playerNum == 2:
-		tween.tween_property($Control/Renee, "value", Global.p2hp, 1.5)
+		tween.tween_property($Control/Renee, "value", Global.p2hp, 0.5)
 	else:
-		tween.tween_property($Control/Boris, "value", Global.p1hp, 1.5)
+		tween.tween_property($Control/Boris, "value", Global.p1hp, 0.5)
 	tween.play()
+
+	await tween.finished
+	if Global.p1hp <= 0:
+		get_tree().change_scene_to_file("res://Scenes/ReneeWins.tscn")
+	if Global.p2hp <= 0:
+		get_tree().change_scene_to_file("res://Scenes/BorrisWins.tscn")
 
 var startDelay = 2
 
