@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d235khmttr0oe"
-path="res://.godot/imported/Start Loading Bar Vine.png-25d25f5f84405763785eceedff9b3a96.ctex"
+uid="uid://du8dbhihw3sk5"
+path="res://.godot/imported/Haven Hamilton.apple-touch-icon.png-1503c18b0e0f486f83e05cddc3cbe890.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Start Loading Bar Vine.png"
-dest_files=["res://.godot/imported/Start Loading Bar Vine.png-25d25f5f84405763785eceedff9b3a96.ctex"]
+source_file="res://exports/Haven Hamilton.apple-touch-icon.png"
+dest_files=["res://.godot/imported/Haven Hamilton.apple-touch-icon.png-1503c18b0e0f486f83e05cddc3cbe890.ctex"]
 
 [params]
 

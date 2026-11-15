@@ -12,7 +12,7 @@ func _ready() -> void:
 func hpChange(playerNum, _amount):
 	var tween: Tween = get_tree().create_tween()
 	if playerNum == 2:
-		# tween.tween_property($Control/Renee, "value", Global.p2hp, 0.5)
+		tween.tween_property($Control/Renee, "value", Global.p2hp, 0.5)
 		$Player2.modulate = Color8(255, 0, 0, 255.0)
 	
 		get_tree().create_timer(0.5).connect("timeout", func():
@@ -22,7 +22,7 @@ func hpChange(playerNum, _amount):
 		$Player.modulate = Color8(255, 0, 0)
 		get_tree().create_timer(0.5).connect("timeout", func():
 			$Player.modulate = Color8(255, 255, 255))
-	# tween.play()
+	tween.play()
 
 	await tween.finished
 	if Global.p1hp <= 0:

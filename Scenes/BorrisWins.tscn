@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b8wqsa1mdb50h" path="res://Scripts/win.gd" id="1_v4kcx"]
 [ext_resource type="Texture2D" uid="uid://crti8ml8blv0o" path="res://Art/Boris Wins.png" id="1_vcm4s"]
+[ext_resource type="Texture2D" uid="uid://dqj5mdfmkkn42" path="res://Art/Easter Egg.png" id="3_0nv6o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wm1qo"]
 atlas = ExtResource("1_vcm4s")
@@ -61,7 +62,7 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Node2D" type="Node2D" unique_id=88262683]
+[node name="Node2D2" type="Node2D" unique_id=88262683]
 script = ExtResource("1_v4kcx")
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=761939267]
@@ -75,3 +76,7 @@ frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1666576540]
 zoom = Vector2(1.2, 1.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=897703278]
+position = Vector2(-500, 0)
+texture = ExtResource("3_0nv6o")
