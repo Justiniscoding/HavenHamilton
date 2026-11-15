@@ -127,9 +127,6 @@ script = ExtResource("3_1l0tm")
 player1 = NodePath("../Player")
 player2 = NodePath("../Player2")
 
-[node name="TimeToken" parent="." unique_id=15822373 instance=ExtResource("3_wrm1d")]
-position = Vector2(11, 37)
-
 [node name="MainThemeLoopPlayer" type="AudioStreamPlayer2D" parent="." unique_id=441424644]
 stream = ExtResource("5_1l0tm")
 autoplay = true
@@ -141,7 +138,7 @@ offset_right = 132.0
 offset_bottom = 37.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1880161754]
-position = Vector2(22, 79)
+position = Vector2(22, 82)
 sprite_frames = SubResource("SpriteFrames_4042a")
 autoplay = "default"
 frame_progress = 0.37473872
@@ -157,3 +154,6 @@ polygon = PackedVector2Array(-223, 0, -213, -2, -203, -2, -187, 0, -182, 1, -178
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1020512744]
 polygon = PackedVector2Array(181, 8, 186, 3, 188, 2, 196, 2, 197, 1, 199, 1, 200, 0, 202, 0, 205, -3, 207, -3, 210, -2, 211, -1, 238, -1, 241, 0, 246, 1, 249, 1, 250, 0, 259, 0, 260, -1, 275, -1, 279, 0, 283, 1, 285, 2, 287, 4, 288, 4, 290, 6, 290, 7, 292, 12, 291, 15, 288, 15, 285, 12, 284, 13, 247, 13, 239, 12, 233, 11, 211, 11, 201, 11, 201, 12, 192, 12, 192, 13, 184, 13)
+
+[node name="TimeToken" parent="." unique_id=15822373 instance=ExtResource("3_wrm1d")]
+position = Vector2(10, 47)
