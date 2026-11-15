@@ -1,3 +1,10 @@
 [gd_scene format=3 uid="uid://dhafs15qqx18u"]
 
+[ext_resource type="AudioStream" uid="uid://oyehbj16pdlg" path="res://Music/TitleTheme - 2026-11-15, 12.19 AM.wav" id="1_1rerr"]
+[ext_resource type="Script" uid="uid://cqpodwer7mah7" path="res://Scripts/menu.gd" id="1_xhh6f"]
+
 [node name="Menu" type="Node2D" unique_id=1605334410]
+script = ExtResource("1_xhh6f")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1607523533]
+stream = ExtResource("1_1rerr")
