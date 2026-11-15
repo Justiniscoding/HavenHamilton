@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 		elif canDoubleJump:
 			canDoubleJump = false
 			velocity.y = doubleJumpSize
-	if not is_on_floor() and Input.is_action_just_released("up" + pnum):
+	if not is_on_floor() and Input.is_action_just_released("up" + pnum) and canDoubleJump:
 		velocity.y *= 0.5
 
 	velocity.y += gravity * delta

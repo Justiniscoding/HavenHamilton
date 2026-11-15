@@ -1,19 +1,44 @@
 [gd_scene format=4 uid="uid://dyn3itle8p414"]
 
 [ext_resource type="PackedScene" uid="uid://6b46cgob32hp" path="res://Scenes/player.tscn" id="1_ebmjs"]
-[ext_resource type="Texture2D" uid="uid://vs61kors6ekh" path="res://icon.svg" id="2_qxrlw"]
 [ext_resource type="PackedScene" uid="uid://b88qmaxe3ua7i" path="res://Scenes/TimeToken.tscn" id="3_wrm1d"]
+[ext_resource type="Texture2D" uid="uid://da2opakfavn2u" path="res://Art/Top Layer Ground.png" id="4_3dryh"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qxrlw"]
-texture = ExtResource("2_qxrlw")
-texture_region_size = Vector2i(128, 128)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wrm1d"]
+texture = ExtResource("4_3dryh")
+texture_region_size = Vector2i(32, 32)
+0:1/animation_columns = 6
+0:1/animation_frame_0/duration = 1.0
+0:1/animation_frame_1/duration = 1.0
+0:1/animation_frame_2/duration = 1.0
+0:1/animation_frame_3/duration = 1.0
+0:1/animation_frame_4/duration = 1.0
+0:1/animation_frame_5/duration = 1.0
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:2/animation_columns = 6
+0:2/animation_frame_0/duration = 1.0
+0:2/animation_frame_1/duration = 1.0
+0:2/animation_frame_2/duration = 1.0
+0:2/animation_frame_3/duration = 1.0
+0:2/animation_frame_4/duration = 1.0
+0:2/animation_frame_5/duration = 1.0
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:0/animation_columns = 6
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.0
+0:0/animation_frame_4/duration = 1.0
+0:0/animation_frame_5/duration = 1.0
 0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
-[sub_resource type="TileSet" id="TileSet_qxrlw"]
-tile_size = Vector2i(128, 128)
+[sub_resource type="TileSet" id="TileSet_3dryh"]
+tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_qxrlw")
+sources/0 = SubResource("TileSetAtlasSource_wrm1d")
 
 [node name="Game" type="Node2D" unique_id=722572871]
 texture_filter = 1
@@ -27,11 +52,11 @@ position = Vector2(98, 608)
 playerNumber = 2
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1575957073]
-position = Vector2(224, 559)
-
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1057907369]
-tile_map_data = PackedByteArray("AAD2/wMAAAAAAAAAAAD3/wMAAAAAAAAAAAD4/wMAAAAAAAAAAAD5/wMAAAAAAAAAAAD6/wMAAAAAAAAAAAD7/wMAAAAAAAAAAAD8/wMAAAAAAAAAAAD9/wMAAAAAAAAAAAD+/wMAAAAAAAAAAAAMAP3/AAAAAAAAAAANAP3/AAAAAAAAAAAOAP3/AAAAAAAAAAAPAP3/AAAAAAAAAAAQAP3/AAAAAAAAAAARAP3/AAAAAAAAAAASAP3/AAAAAAAAAAATAP3/AAAAAAAAAAAUAP3/AAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAAKAAUAAAAAAAAAAAALAAUAAAAAAAAAAAAMAAUAAAAAAAAAAAANAAUAAAAAAAAAAAAOAAUAAAAAAAAAAAAPAAUAAAAAAAAAAAD9/wUAAAAAAAAAAAD+/wUAAAAAAAAAAAD//wUAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_qxrlw")
+position = Vector2(224, 583)
 
 [node name="TimeToken" parent="." unique_id=15822373 instance=ExtResource("3_wrm1d")]
 position = Vector2(179, 627)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1552162095]
+tile_map_data = PackedByteArray("AAABABUAAAAAAAAAAAACABUAAAAAAAAAAAADABUAAAAAAAAAAAAEABUAAAAAAAAAAAAFABUAAAAAAAAAAAAGABUAAAAAAAAAAAAHABUAAAAAAAAAAAAIABUAAAAAAAAAAAAJABUAAAAAAAAAAAAKABUAAAAAAAAAAAALABUAAAAAAAAAAAAMABUAAAAAAAAAAAANABUAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_3dryh")

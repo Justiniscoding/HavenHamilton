@@ -26,7 +26,7 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("CollisionShape2D:position")
-tracks/0/interp = 2
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 1),
@@ -155,6 +155,6 @@ rotation = 3.1415925
 scale = Vector2(1, -1)
 sprite_frames = SubResource("SpriteFrames_ou2wq")
 autoplay = "default"
-frame_progress = 0.9636284
+frame_progress = 0.5470965
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
