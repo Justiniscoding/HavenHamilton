@@ -15,6 +15,8 @@ var doubleJumpSize = jump * 0.75
 
 var canDoubleJump = false
 
+var socket = WebSocketPeer.new()
+
 var pnum
 
 class timer:
@@ -84,6 +86,10 @@ var didAttack = false
 
 var forcedDirection = 0
 
+class otherPlayer:
+	var pos: Vector2
+	var facing: int
+
 func _ready() -> void:
 	pnum = str(playerNumber)
 
@@ -91,6 +97,13 @@ func _ready() -> void:
 	$AnimatedSprite2D.material = $AnimatedSprite2D.material.duplicate()
 
 	$AnimatedSprite2D.play("idle" + pnum)
+
+	var error = socket.connect_to_url("ws://localhost:8080")
+
+	if error == OK:
+		print("connected to websocket")
+	else:
+		push_error("error connecting to websocket")
 
 func getCollider():
 	if $Weapon.has_overlapping_bodies():
@@ -186,6 +199,16 @@ func fight():
 
 
 var isJumping = false
+
+func _process(_delta: float) -> void:
+	socket.poll()
+	var state = socket.get_ready_state()
+
+	if state == WebSocketPeer.STATE_OPEN:
+		while socket.get_available_packet_count():
+			var packet = socket.get_packet()
+			if socket.was_string_packet():
+				print(packet.get_string_from_utf8())
 
 func _physics_process(delta: float) -> void:
 	startup.update(delta)

@@ -120,19 +120,16 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(93, 3)
 stream = ExtResource("1_wowpa")
 
-[node name="Player" parent="." unique_id=297062209 instance=ExtResource("1_ebmjs")]
+[node name="Player2" parent="." unique_id=297062209 instance=ExtResource("1_ebmjs")]
 modulate = Color(0.9490196, 0.9490196, 0.9490196, 1)
-position = Vector2(230, -19)
-
-[node name="Player2" parent="." unique_id=1520999625 instance=ExtResource("1_ebmjs")]
-position = Vector2(-191, -21)
+position = Vector2(52, 43)
 playerNumber = 2
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1575957073 node_paths=PackedStringArray("player1", "player2")]
 position = Vector2(56, -7)
 script = ExtResource("3_1l0tm")
-player1 = NodePath("../Player")
-player2 = NodePath("../Player2")
+player1 = NodePath("../Player2")
+player2 = NodePath("")
 
 [node name="MainThemeLoopPlayer" type="AudioStreamPlayer2D" parent="." unique_id=441424644]
 stream = ExtResource("5_1l0tm")
