@@ -5,23 +5,46 @@ var playerNode
 var teleTo
 var beenPlaced = false
 
+var debounce = 0
 
-func _process(_delta: float) -> void:
+var isTeleporting = false
+
+func teleport() -> void:
+	isTeleporting = true
+	playerNode.get_node("Sprite2D").material.set_shader_parameter("enabled", true)
+
+func _process(delta: float) -> void:
+	if isTeleporting:
+		var time = playerNode.get_node("Sprite2D").material.get_shader_parameter("time")
+
+		if time >= 0.5:
+			playerNode.get_node("Sprite2D").material.set_shader_parameter("enabled", false)
+			playerNode.position = teleTo
+			playerNode.get_node("Sprite2D").material.set_shader_parameter("time", 0.0)
+			queue_free()
+			return
+
+		playerNode.get_node("Sprite2D").material.set_shader_parameter("time", time + delta * 3.0)
+		return
+
+	if debounce > 0:
+		debounce -= delta
+
 	if hasBeenPickedUp:
 		if playerNode.name == "Player":
 			if Input.is_action_just_released("down1") and not beenPlaced:
 				teleTo = playerNode.position
+				debounce = 1
 				beenPlaced = true
-			if Input.is_action_just_pressed("down1") and beenPlaced:
-				playerNode.position = teleTo
-				queue_free()
+			elif Input.is_action_just_released("down1") and beenPlaced and debounce < 0:
+				teleport()
 		else:
 			if Input.is_action_just_released("down2") and not beenPlaced:
 				teleTo = playerNode.position
 				beenPlaced = true
-			if Input.is_action_just_pressed("down2") and beenPlaced:
-				playerNode.position = teleTo
-				queue_free()
+				debounce = 1
+			elif Input.is_action_just_released("down2") and beenPlaced and debounce < 0:
+				teleport()
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name.begins_with("Player"):
