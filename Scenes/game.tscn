@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b88qmaxe3ua7i" path="res://Scenes/TimeToken.tscn" id="3_wrm1d"]
 [ext_resource type="Texture2D" uid="uid://da2opakfavn2u" path="res://Art/Top Layer Ground.png" id="4_3dryh"]
 [ext_resource type="AudioStream" uid="uid://dl3sxhtnvy34y" path="res://Music/MainThemeLoop.wav" id="5_1l0tm"]
+[ext_resource type="Texture2D" uid="uid://bpqvv35b5gua2" path="res://Art/Health Bars.png" id="5_wowpa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wrm1d"]
 texture = ExtResource("4_3dryh")
@@ -56,3 +57,10 @@ tile_set = SubResource("TileSet_3dryh")
 [node name="MainThemeLoopPlayer" type="AudioStreamPlayer2D" parent="." unique_id=441424644]
 stream = ExtResource("5_1l0tm")
 autoplay = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=33905053]
+offset_left = 4.0
+offset_top = -3.0
+offset_right = 132.0
+offset_bottom = 37.0
+texture_under = ExtResource("5_wowpa")
