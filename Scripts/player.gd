@@ -142,6 +142,7 @@ func fight():
 				didAttack = true
 
 				Global.remove_hp(1 if playerNumber == 2 else 2, 3)
+				
 
 				player.targetVel.y = -1000
 				player.targetVel.x = 1000 if $AnimatedSprite2D.flip_h else -1000
