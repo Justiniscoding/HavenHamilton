@@ -4,16 +4,63 @@
 [ext_resource type="Texture2D" uid="uid://dglpnot34ux6w" path="res://Art/Player1.png" id="2_cvnsp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xs5hf"]
-size = Vector2(28.75, 32)
+size = Vector2(13.5, 28)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xs5hf"]
+radius = 3.5837088
+height = 29.708729
+
+[sub_resource type="Shader" id="Shader_cvnsp"]
+code = "shader_type canvas_item;
+
+uniform bool enabled = true;
+uniform float time = 0.3;
+
+void fragment() {
+	if(enabled == true){
+
+	float dist = sqrt(pow(UV.y - 0.5, 2) + pow(UV.x - 0.5, 2));
+	dist = pow(dist, max(1.0 - time * 2.0, 0.0));
+	
+	if(dist < 0.5){
+		float angle = atan(UV.x - 0.5, UV.y - 0.5);
+		
+		vec2 samplePos = vec2(sin(angle), cos(angle)) * dist + vec2(0.5, 0.5);
+		
+		vec4 texture = texture(TEXTURE, samplePos);
+		
+		COLOR = texture;
+	}else{
+		COLOR = vec4(0, 0, 0, 0);
+	}
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6t5aa"]
+shader = SubResource("Shader_cvnsp")
+shader_parameter/enabled = false
+shader_parameter/time = 0.0
 
 [node name="Player" type="CharacterBody2D" unique_id=297062209]
 texture_filter = 1
+collision_mask = 2
 script = ExtResource("1_v0iea")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=834438449]
+position = Vector2(-13, 0)
+shape = SubResource("RectangleShape2D_xs5hf")
+
+[node name="Weapon" type="Area2D" parent="." unique_id=1768816585]
+position = Vector2(-23, -18)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon" unique_id=1330458432]
+position = Vector2(-6, 7)
+rotation = 2.443461
+shape = SubResource("CapsuleShape2D_xs5hf")
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=910321821]
+material = SubResource("ShaderMaterial_6t5aa")
+position = Vector2(-30, -18)
 texture = ExtResource("2_cvnsp")
 centered = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=834438449]
-position = Vector2(17.625, 16)
-shape = SubResource("RectangleShape2D_xs5hf")
+offset = Vector2(-7, 0)

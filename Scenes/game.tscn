@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://6b46cgob32hp" path="res://Scenes/player.tscn" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://b88qmaxe3ua7i" path="res://Scenes/TimeToken.tscn" id="3_wrm1d"]
-[ext_resource type="Texture2D" uid="uid://da2opakfavn2u" path="res://Art/Top Layer Ground.png" id="4_3dryh"]
+[ext_resource type="Texture2D" uid="uid://dd23tdkfhy6yk" path="res://Art/Top Layer Ground.png" id="4_3dryh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wrm1d"]
 texture = ExtResource("4_3dryh")
@@ -37,7 +37,8 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_3dryh"]
 tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_wrm1d")
 
 [node name="Game" type="Node2D" unique_id=722572871]
