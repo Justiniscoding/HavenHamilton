@@ -63,12 +63,12 @@ var weapons = {
 	range2 = {
 		charge = 3,
 		attack = 12,
-		cooldown = 6
+		cooldown = 36
 	},
 	range1 = {
 		charge = 7,
 		attack = 24,
-		cooldown = 36
+		cooldown = 10
 	}
 }
 
@@ -84,6 +84,8 @@ func _ready() -> void:
 
 	# fixes shader param issue
 	$AnimatedSprite2D.material = $AnimatedSprite2D.material.duplicate()
+
+	$AnimatedSprite2D.play("idle" + pnum)
 
 func getCollider():
 	if $Weapon.has_overlapping_bodies():

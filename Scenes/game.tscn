@@ -77,6 +77,9 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5yvi"]
+size = Vector2(2270, 446)
+
 [node name="Game" type="Node2D" unique_id=722572871]
 texture_filter = 1
 script = ExtResource("1_v158k")
@@ -116,10 +119,10 @@ position = Vector2(93, 3)
 stream = ExtResource("1_wowpa")
 
 [node name="Player" parent="." unique_id=297062209 instance=ExtResource("1_ebmjs")]
-position = Vector2(93, 3)
+position = Vector2(230, -19)
 
 [node name="Player2" parent="." unique_id=1520999625 instance=ExtResource("1_ebmjs")]
-position = Vector2(-70, 18)
+position = Vector2(-191, -21)
 playerNumber = 2
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1575957073 node_paths=PackedStringArray("player1", "player2")]
@@ -158,3 +161,9 @@ polygon = PackedVector2Array(181, 8, 186, 3, 188, 2, 196, 2, 197, 1, 199, 1, 200
 
 [node name="TimeToken" parent="." unique_id=15822373 instance=ExtResource("3_wrm1d")]
 position = Vector2(10, 47)
+
+[node name="DeadZone" type="Area2D" parent="." unique_id=1461938756]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeadZone" unique_id=1885802739]
+position = Vector2(-55, 611)
+shape = SubResource("RectangleShape2D_o5yvi")

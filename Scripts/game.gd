@@ -28,11 +28,16 @@ func _process(delta: float) -> void:
 		add_child(timeToken)
 		timeToken.position.x = (randf() * 550) - 275
 		timeToken.position.y = 50
-		timePerToken = 8 + randf() * 4
+		timePerToken = 10 + randf() * 8
 	startDelay -= delta
 
 	if startDelay <= 0:
 		$"Time Demon".modulate.a += (delta) * 0.25
-
-		if $"Time Demon".modulate.a >= 1:
-			set_process(false)
+		$"Time Demon".rotation_degrees += delta * 5
+	
+	if $DeadZone.has_overlapping_bodies():
+		for body in $DeadZone.get_overlapping_bodies():
+			if body.name == "Player":
+				get_tree().change_scene_to_file("res://Scenes/ReneeWins.tscn")
+			if body.name == "Player2":
+				get_tree().change_scene_to_file("res://Scenes/BorrisWins.tscn")
