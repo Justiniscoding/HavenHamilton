@@ -131,18 +131,4 @@ offset_right = -36.0
 offset_bottom = 66.0
 flat = true
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=62776827]
-offset_left = 19.0
-offset_top = 30.0
-offset_right = 129.0
-offset_bottom = 70.0
-color = Color(0.21568628, 0.5803922, 0.43137255, 1)
-
-[node name="ColorRect2" type="ColorRect" parent="." unique_id=1391423060]
-offset_left = -157.0
-offset_top = 70.0
-offset_right = -47.0
-offset_bottom = 110.0
-color = Color(0.21568628, 0.5803922, 0.43137255, 1)
-
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
