@@ -20,6 +20,7 @@ func _process(delta: float) -> void:
 		if time >= 0.5:
 			playerNode.get_node("AnimatedSprite2D").material.set_shader_parameter("enabled", false)
 			playerNode.position = teleTo
+			playerNode.canDoubleJump = true
 			playerNode.get_node("AnimatedSprite2D").material.set_shader_parameter("time", 0.0)
 			queue_free()
 			return

@@ -90,20 +90,20 @@ frame_progress = 0.14964102
 [node name="Control" type="CanvasLayer" parent="." unique_id=251352132]
 
 [node name="Boris" type="TextureProgressBar" parent="Control" unique_id=33905053]
-offset_left = 186.0
-offset_top = -135.0
-offset_right = 314.0
-offset_bottom = -71.0
+offset_left = 320.0
+offset_top = -2.0
+offset_right = 448.0
+offset_bottom = 62.0
 value = 100.0
 texture_under = ExtResource("5_i6g32")
 texture_progress = ExtResource("6_1l0tm")
 texture_progress_offset = Vector2(13, 13)
 
 [node name="Renee" type="TextureProgressBar" parent="Control" unique_id=1410879824]
-offset_left = -145.0
-offset_top = -135.0
-offset_right = -17.0
-offset_bottom = -71.0
+offset_left = -9.0
+offset_top = -1.0
+offset_right = 119.0
+offset_bottom = 63.0
 value = 100.0
 texture_under = ExtResource("5_v158k")
 texture_progress = ExtResource("6_1l0tm")

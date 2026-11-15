@@ -77,6 +77,8 @@ var targetVel := Vector2.ZERO
 var weaponState = WeaponState.READY
 var didAttack = false
 
+var forcedDirection = 0
+
 func _ready() -> void:
 	pnum = str(playerNumber)
 
@@ -99,11 +101,13 @@ func fight():
 			startup.reset(weapons["short" + pnum].charge)
 			currentAttack = Attacks.SHORT
 			weaponState = WeaponState.CHARGING
+			forcedDirection = 1 if $AnimatedSprite2D.flip_h else -1
 			print("charging")
 
 		if Input.is_action_just_pressed("range" + pnum):
 			$AnimatedSprite2D.play("range" + pnum)
 			startup.reset(weapons["range" + pnum].charge)
+			forcedDirection = 1 if $AnimatedSprite2D.flip_h else -1
 			currentAttack = Attacks.RANGED
 			weaponState = WeaponState.CHARGING
 	
@@ -121,6 +125,8 @@ func fight():
 
 			if not player == null and not currentAttack == Attacks.NONE and not didAttack:
 				didAttack = true
+
+				Global.remove_hp(1 if playerNumber == 2 else 2, 3)
 
 				player.targetVel.y = -1000
 				player.targetVel.x = 1000 if $AnimatedSprite2D.flip_h else -1000
@@ -180,6 +186,9 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		direction *= 0.75
 
+	if currentAttack == Attacks.NONE:
+		forcedDirection = 0
+
 	targetVel = lerp(targetVel, Vector2.ZERO, 0.2)
 
 	if direction != 0:
@@ -191,12 +200,12 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite2D.play("idle" + pnum)
 		velocity.x = lerp(velocity.x, 0.0, 0.25)
 
-	if velocity.x > 0:
+	if velocity.x > 0 and forcedDirection != -1:
 		$AnimatedSprite2D.flip_h = true
 		$AnimatedSprite2D.offset.x = 7
 		$Weapon.scale.x = -1
 		$Weapon.position.x = 18
-	elif velocity.x < 0:
+	elif velocity.x < 0 and forcedDirection != 1:
 		$AnimatedSprite2D.flip_h = false
 		$AnimatedSprite2D.offset.x = -7
 		$Weapon.scale.x = 1

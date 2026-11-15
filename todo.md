@@ -1,2 +1,4 @@
-- stun frames after hit
+# Todo
+- 
 - locked direction after jump
+- stun frames after hit
