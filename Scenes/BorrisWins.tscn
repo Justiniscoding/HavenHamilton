@@ -62,7 +62,7 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Node2D2" type="Node2D" unique_id=88262683]
+[node name="Node2D3" type="Node2D" unique_id=88262683]
 script = ExtResource("1_v4kcx")
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=761939267]

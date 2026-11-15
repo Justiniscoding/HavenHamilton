@@ -7,19 +7,21 @@ func _ready() -> void:
 	$Control/Renee.value = 100
 	$Control/Boris.value = 100
 
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+
 	Global.connect("hpChange", hpChange)
 
 func hpChange(playerNum, _amount):
 	var tween: Tween = get_tree().create_tween()
 	if playerNum == 2:
 		tween.tween_property($Control/Renee, "value", Global.p2hp, 0.5)
-		$Player2.modulate = Color8(255, 0, 0, 255.0)
+		$Player2.modulate = Color8(255, 100, 100, 255)
 	
 		get_tree().create_timer(0.5).connect("timeout", func():
 			$Player2.modulate = Color8(255, 255, 255))
 	else:
 		tween.tween_property($Control/Boris, "value", Global.p1hp, 0.5)
-		$Player.modulate = Color8(255, 0, 0)
+		$Player.modulate = Color8(100, 100, 255)
 		get_tree().create_timer(0.5).connect("timeout", func():
 			$Player.modulate = Color8(255, 255, 255))
 	tween.play()
