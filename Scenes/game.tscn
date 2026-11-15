@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dyn3itle8p414"]
 
 [ext_resource type="PackedScene" uid="uid://6b46cgob32hp" path="res://Scenes/player.tscn" id="1_ebmjs"]
-[ext_resource type="Script" uid="uid://oho1sh82b3xk" path="res://Scripts/game.gd" id="1_v158k"]
+[ext_resource type="Script" uid="uid://dje4dgo7fq3th" path="res://Scripts/game.gd" id="1_v158k"]
 [ext_resource type="AudioStream" uid="uid://b25o731vuv7wv" path="res://Sound Effects/lumora_studios-pixel-jump-319167.mp3" id="1_wowpa"]
-[ext_resource type="Script" uid="uid://bbldk7smspsne" path="res://Scenes/camera_2d.gd" id="3_1l0tm"]
+[ext_resource type="Script" uid="uid://cndcvi7f5cpmh" path="res://Scenes/camera_2d.gd" id="3_1l0tm"]
 [ext_resource type="PackedScene" uid="uid://b88qmaxe3ua7i" path="res://Scenes/TimeToken.tscn" id="3_wrm1d"]
 [ext_resource type="AudioStream" uid="uid://dl3sxhtnvy34y" path="res://Music/MainThemeLoop.wav" id="5_1l0tm"]
 [ext_resource type="Texture2D" uid="uid://cdxm5eqob853o" path="res://Art/Health Bars Boris.png" id="5_i6g32"]
@@ -143,6 +143,7 @@ offset_bottom = 37.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1880161754]
 position = Vector2(22, 79)
 sprite_frames = SubResource("SpriteFrames_4042a")
+autoplay = "default"
 frame_progress = 0.37473872
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1830370362]
