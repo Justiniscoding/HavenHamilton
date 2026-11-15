@@ -13,3 +13,10 @@ func _process(delta: float) -> void:
 		$AudioStreamPlayer2D.stop()
 		get_tree().change_scene_to_file("res://Scenes/Countdown.tscn")
 	pass
+
+
+func _on_button_button_down() -> void:
+	print("enter")
+	$AudioStreamPlayer2D.stop()
+	get_tree().change_scene_to_file("res://Scenes/Countdown.tscn")
+	pass # Replace with function body.

@@ -3,6 +3,7 @@
 [ext_resource type="AudioStream" uid="uid://oyehbj16pdlg" path="res://Music/TitleTheme - 2026-11-15, 12.19 AM.wav" id="1_1rerr"]
 [ext_resource type="Script" uid="uid://cqpodwer7mah7" path="res://Scripts/menu.gd" id="1_xhh6f"]
 [ext_resource type="Texture2D" uid="uid://c0x4hvy5mhgw1" path="res://Art/Time Token.png" id="2_cayip"]
+[ext_resource type="Texture2D" uid="uid://bx613aaaryoks" path="res://Art/Start Scene.png" id="4_158mb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_158mb"]
 atlas = ExtResource("2_cayip")
@@ -118,3 +119,29 @@ stream = ExtResource("1_1rerr")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1510580165]
 scale = Vector2(0.5, 0.5)
+
+[node name="StartScene" type="Sprite2D" parent="." unique_id=993126360]
+texture = ExtResource("4_158mb")
+
+[node name="Button" type="Button" parent="." unique_id=1209993543]
+offset_left = -113.0
+offset_top = 36.0
+offset_right = -36.0
+offset_bottom = 66.0
+flat = true
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=62776827]
+offset_left = 19.0
+offset_top = 30.0
+offset_right = 129.0
+offset_bottom = 70.0
+color = Color(0.21568628, 0.5803922, 0.43137255, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1391423060]
+offset_left = -157.0
+offset_top = 70.0
+offset_right = -47.0
+offset_bottom = 110.0
+color = Color(0.21568628, 0.5803922, 0.43137255, 1)
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
