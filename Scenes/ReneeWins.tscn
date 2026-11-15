@@ -64,6 +64,7 @@ animations = [{
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=480088947]
 scale = Vector2(0.75, 0.75)
+zoom = Vector2(1.2, 1.2)
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=1704843996]
 sprite_frames = SubResource("SpriteFrames_8vehc")

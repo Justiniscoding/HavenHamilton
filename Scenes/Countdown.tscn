@@ -22,3 +22,4 @@ texture_progress = ExtResource("4_6qswr")
 texture_progress_offset = Vector2(12, 11)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=8338288]
+zoom = Vector2(2, 2)
