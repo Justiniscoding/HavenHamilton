@@ -1,15 +1,45 @@
 [gd_scene format=3 uid="uid://dyn3itle8p414"]
 
 [ext_resource type="PackedScene" uid="uid://6b46cgob32hp" path="res://Scenes/player.tscn" id="1_ebmjs"]
-[ext_resource type="Script" uid="uid://dje4dgo7fq3th" path="res://Scripts/game.gd" id="1_v158k"]
+[ext_resource type="Script" uid="uid://oho1sh82b3xk" path="res://Scripts/game.gd" id="1_v158k"]
 [ext_resource type="AudioStream" uid="uid://b25o731vuv7wv" path="res://Sound Effects/lumora_studios-pixel-jump-319167.mp3" id="1_wowpa"]
-[ext_resource type="Script" uid="uid://cndcvi7f5cpmh" path="res://Scenes/camera_2d.gd" id="3_1l0tm"]
+[ext_resource type="Script" uid="uid://bbldk7smspsne" path="res://Scenes/camera_2d.gd" id="3_1l0tm"]
 [ext_resource type="PackedScene" uid="uid://b88qmaxe3ua7i" path="res://Scenes/TimeToken.tscn" id="3_wrm1d"]
 [ext_resource type="AudioStream" uid="uid://dl3sxhtnvy34y" path="res://Music/MainThemeLoop.wav" id="5_1l0tm"]
 [ext_resource type="Texture2D" uid="uid://cdxm5eqob853o" path="res://Art/Health Bars Boris.png" id="5_i6g32"]
 [ext_resource type="Texture2D" uid="uid://bfy8mq3vnaabh" path="res://Art/Health Bars Renee.png" id="5_v158k"]
 [ext_resource type="Texture2D" uid="uid://udnjqch7qpb0" path="res://Art/Health Bar.png" id="6_1l0tm"]
 [ext_resource type="Texture2D" uid="uid://ccf47vgihedfg" path="res://Art/Stage.png" id="6_i6g32"]
+[ext_resource type="Texture2D" uid="uid://drtel6jj76d3m" path="res://Art/TIME DEMON.png" id="11_o5yvi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rku1e"]
+atlas = ExtResource("11_o5yvi")
+region = Rect2(0, 448, 720, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfjv2"]
+atlas = ExtResource("11_o5yvi")
+region = Rect2(720, 448, 720, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1phco"]
+atlas = ExtResource("11_o5yvi")
+region = Rect2(1440, 448, 720, 448)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xs5hf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rku1e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfjv2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1phco")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1l0tm"]
 atlas = ExtResource("6_i6g32")
@@ -51,6 +81,35 @@ animations = [{
 texture_filter = 1
 script = ExtResource("1_v158k")
 
+[node name="Time Demon" type="AnimatedSprite2D" parent="." unique_id=949820943]
+texture_filter = 2
+sprite_frames = SubResource("SpriteFrames_xs5hf")
+autoplay = "default"
+frame_progress = 0.14964102
+
+[node name="Control" type="CanvasLayer" parent="." unique_id=251352132]
+
+[node name="Boris" type="TextureProgressBar" parent="Control" unique_id=33905053]
+offset_left = 186.0
+offset_top = -135.0
+offset_right = 314.0
+offset_bottom = -71.0
+value = 100.0
+texture_under = ExtResource("5_i6g32")
+texture_progress = ExtResource("6_1l0tm")
+texture_progress_offset = Vector2(13, 13)
+
+[node name="Renee" type="TextureProgressBar" parent="Control" unique_id=1410879824]
+offset_left = -145.0
+offset_top = -135.0
+offset_right = -17.0
+offset_bottom = -71.0
+value = 100.0
+texture_under = ExtResource("5_v158k")
+texture_progress = ExtResource("6_1l0tm")
+texture_progress_offset = Vector2(13, 13)
+metadata/_edit_use_anchors_ = true
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1348945278]
 position = Vector2(93, 3)
 stream = ExtResource("1_wowpa")
@@ -67,27 +126,6 @@ position = Vector2(56, -7)
 script = ExtResource("3_1l0tm")
 player1 = NodePath("../Player")
 player2 = NodePath("../Player2")
-
-[node name="Renee" type="TextureProgressBar" parent="Camera2D" unique_id=1410879824]
-offset_left = -201.0
-offset_top = -129.0
-offset_right = -73.0
-offset_bottom = -65.0
-value = 100.0
-texture_under = ExtResource("5_v158k")
-texture_progress = ExtResource("6_1l0tm")
-texture_progress_offset = Vector2(13, 13)
-metadata/_edit_use_anchors_ = true
-
-[node name="Boris" type="TextureProgressBar" parent="Camera2D" unique_id=33905053]
-offset_left = 130.0
-offset_top = -132.0
-offset_right = 258.0
-offset_bottom = -68.0
-value = 100.0
-texture_under = ExtResource("5_i6g32")
-texture_progress = ExtResource("6_1l0tm")
-texture_progress_offset = Vector2(13, 13)
 
 [node name="TimeToken" parent="." unique_id=15822373 instance=ExtResource("3_wrm1d")]
 position = Vector2(11, 37)
