@@ -43,6 +43,8 @@ enum Attacks {
 	RANGED
 }
 
+var hasTime = false
+
 var currentAttack = Attacks.NONE
 
 enum WeaponState{
@@ -54,14 +56,14 @@ enum WeaponState{
 
 var weapons = {
 	short1 = {
-		charge = 18,
-		attack = 15,
-		cooldown = 10
+		charge = 7.5,
+		attack = 10,
+		cooldown = 15
 	},
 	short2 = {
-		charge = 8,
-		attack = 24,
-		cooldown = 12
+		charge = 5,
+		attack = 15,
+		cooldown = 5
 	},
 	range2 = {
 		charge = 3,
@@ -144,8 +146,8 @@ func fight():
 				Global.remove_hp(1 if playerNumber == 2 else 2, 3)
 				
 
-				player.targetVel.y = -1000
-				player.targetVel.x = 1000 if $AnimatedSprite2D.flip_h else -1000
+				player.targetVel.y = -1500
+				player.targetVel.x = 1500 if $AnimatedSprite2D.flip_h else -1500
 		else:
 			if not didAttack:
 				didAttack = true
@@ -164,7 +166,7 @@ func fight():
 
 					var currDurr = 1 if $AnimatedSprite2D.flip_h else -1
 
-					lightning.position = position + Vector2(currDurr * 200, -30)
+					lightning.position = position + Vector2(currDurr * 150, -30)
 
 
 	

@@ -1,14 +1,34 @@
 extends Area2D
 
+var start = load("res://Sound Effects/fire ball conjure.mp3")
+var middle = load("res://Sound Effects/fireball swoosh.mp3")
+var end = load("res://Sound Effects/explode.mp3")
+
 var speed = 250
 
 var direction = 1
 
 var timer = 0
 
+var middleAudio
+
+func playAudio(stream, db):
+	var audio = AudioStreamPlayer.new()
+	audio.stream = stream
+	audio.volume_db = db
+	add_child(audio)
+	audio.play()
+	await audio.finished
+	audio.queue_free()
+
 func _ready() -> void:
+	playAudio(start, 5)
 	await $AnimatedSprite2D.animation_finished
 	$AnimatedSprite2D.play("roll")
+	middleAudio = AudioStreamPlayer.new()
+	middleAudio.stream = middle
+	add_child(middleAudio)
+	middleAudio.play()
 
 func _physics_process(delta: float) -> void:
 	timer += delta
@@ -16,7 +36,11 @@ func _physics_process(delta: float) -> void:
 	if timer > 1.5:
 		$AnimatedSprite2D.play("explode")
 		set_physics_process(false)
+		if middleAudio:
+			middleAudio.stop()
+		playAudio(end, 10)
 		$AnimatedSprite2D.connect("animation_finished", func():
+			# await get_tree().create_timer(1.25).timeout
 			queue_free())
 		return
 
@@ -24,10 +48,14 @@ func _physics_process(delta: float) -> void:
 		for body in get_overlapping_bodies():
 			if body.name == "Player2":
 				$AnimatedSprite2D.play("explode")
+				if middleAudio:
+					middleAudio.stop()
+				playAudio(end, 10)
 				set_physics_process(false)
 				body.targetVel.x = 400 * direction
 				Global.remove_hp(2, 5)
 				$AnimatedSprite2D.connect("animation_finished", func():
+					# await get_tree().create_timer(1.25).timeout
 					queue_free())
 				return
 
