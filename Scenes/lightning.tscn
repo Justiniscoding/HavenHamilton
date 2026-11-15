@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b2jlfrmpdpsjn"]
 
 [ext_resource type="Script" uid="uid://bf4x2q5l3sc7g" path="res://Scripts/lightning.gd" id="1_wca04"]
-[ext_resource type="Texture2D" uid="uid://cbgwnn4x2e5fh" path="res://Art/Lightning Bolt.png" id="2_7ouyy"]
+[ext_resource type="Texture2D" uid="uid://dbketk15xrekl" path="res://Art/Lightning Bolt.png" id="2_7ouyy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ouyy"]
 size = Vector2(26, 83)
