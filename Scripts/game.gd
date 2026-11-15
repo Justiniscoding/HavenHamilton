@@ -1,5 +1,8 @@
 extends Node2D
 
+var timeTokenScene = preload("res://Scenes/TimeToken.tscn")
+var timePerToken = 10
+
 func _ready() -> void:
 	$Control/Renee.value = 100
 	$Control/Boris.value = 100
@@ -15,3 +18,16 @@ func hpChange(playerNum, _amount):
 	else:
 		tween.tween_property($Control/Boris, "value", Global.p1hp, 1.5)
 	tween.play()
+	# $Camera2D/Renee.value = Global.p1hp
+	# $Camera2D/Boris.value = Global.p2hp
+
+func _process(delta: float) -> void:
+	timePerToken -= delta
+	print(timePerToken)
+	if timePerToken <= 0:
+		var timeToken = timeTokenScene.instantiate()
+		add_child(timeToken)
+		timeToken.position.x = (randf() * 550) - 275
+		timeToken.position.y = 50
+		timePerToken = 8 + randf() * 4
+		
