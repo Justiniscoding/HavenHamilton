@@ -23,7 +23,6 @@ func hpChange(playerNum, _amount):
 
 func _process(delta: float) -> void:
 	timePerToken -= delta
-	print(timePerToken)
 	if timePerToken <= 0:
 		var timeToken = timeTokenScene.instantiate()
 		add_child(timeToken)
