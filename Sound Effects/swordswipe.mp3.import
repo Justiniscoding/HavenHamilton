@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b1i2g4n5ygs7h"
+path="res://.godot/imported/swordswipe.mp3-216b972b30686475f32db58509cbd456.mp3str"
+
+[deps]
+
+source_file="res://Sound Effects/swordswipe.mp3"
+dest_files=["res://.godot/imported/swordswipe.mp3-216b972b30686475f32db58509cbd456.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

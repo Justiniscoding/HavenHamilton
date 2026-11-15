@@ -1,6 +1,7 @@
 extends Area2D
 
 func _ready() -> void:
+	$AudioStreamPlayer.play()
 	$AnimatedSprite2D.play()
 
 var didStunm = false

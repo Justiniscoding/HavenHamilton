@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 @export var playerNumber: int = 1
 
+var hammersmash = load("res://Sound Effects/hammersmash.mp3")
+var swordswipe  = load("res://Sound Effects/swordswipe.mp3")
+
 var fireballScene = preload("res://Scenes/fireball.tscn")
 var lightningScene = preload("res://Scenes/lightning.tscn")
 
@@ -118,6 +121,16 @@ func fight():
 		print("attacking")
 		if currentAttack == Attacks.SHORT:
 			active.reset(weapons["short" + pnum].attack)
+			var audio = AudioStreamPlayer.new()
+			if playerNumber == 1:
+				audio.stream = swordswipe
+				audio.volume_db = 5
+			else:
+				audio.stream = hammersmash
+			add_child(audio)
+			audio.play()
+			audio.connect("finished", func():
+				audio.queue_free())
 		else:
 			active.reset(weapons["range" + pnum].attack)
 
