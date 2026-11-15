@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dw8n506tj5jrm"]
 
 [ext_resource type="Texture2D" uid="uid://dsmpe36mk8vj7" path="res://Art/Renee Wins.png" id="1_dnio8"]
+[ext_resource type="Script" uid="uid://b8wqsa1mdb50h" path="res://Scripts/win.gd" id="1_w8qh8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w8qh8"]
 atlas = ExtResource("1_dnio8")
@@ -61,6 +62,7 @@ animations = [{
 }]
 
 [node name="Node2D" type="Node2D" unique_id=149586615]
+script = ExtResource("1_w8qh8")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=480088947]
 scale = Vector2(0.75, 0.75)
