@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://oyehbj16pdlg"
+path="res://.godot/imported/TitleTheme - 2026-11-15, 12.19 AM.wav-7c6256d2b80c2e8b04628fb60f8d377b.sample"
+
+[deps]
+
+source_file="res://Music/TitleTheme - 2026-11-15, 12.19 AM.wav"
+dest_files=["res://.godot/imported/TitleTheme - 2026-11-15, 12.19 AM.wav-7c6256d2b80c2e8b04628fb60f8d377b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
