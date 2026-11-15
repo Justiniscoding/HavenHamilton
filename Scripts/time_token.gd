@@ -11,20 +11,20 @@ var isTeleporting = false
 
 func teleport() -> void:
 	isTeleporting = true
-	playerNode.get_node("Sprite2D").material.set_shader_parameter("enabled", true)
+	playerNode.get_node("AnimatedSprite2D").material.set_shader_parameter("enabled", true)
 
 func _process(delta: float) -> void:
 	if isTeleporting:
-		var time = playerNode.get_node("Sprite2D").material.get_shader_parameter("time")
+		var time = playerNode.get_node("AnimatedSprite2D").material.get_shader_parameter("time")
 
 		if time >= 0.5:
-			playerNode.get_node("Sprite2D").material.set_shader_parameter("enabled", false)
+			playerNode.get_node("AnimatedSprite2D").material.set_shader_parameter("enabled", false)
 			playerNode.position = teleTo
-			playerNode.get_node("Sprite2D").material.set_shader_parameter("time", 0.0)
+			playerNode.get_node("AnimatedSprite2D").material.set_shader_parameter("time", 0.0)
 			queue_free()
 			return
 
-		playerNode.get_node("Sprite2D").material.set_shader_parameter("time", time + delta * 3.0)
+		playerNode.get_node("AnimatedSprite2D").material.set_shader_parameter("time", time + delta * 3.0)
 		return
 
 	if debounce > 0:
