@@ -55,12 +55,12 @@ enum WeaponState{
 }
 
 var weapons = {
-	short1 = {
+	short2 = {
 		charge = 7.5,
 		attack = 10,
 		cooldown = 15
 	},
-	short2 = {
+	short1 = {
 		charge = 5,
 		attack = 15,
 		cooldown = 5
