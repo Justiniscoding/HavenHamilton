@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var playerNumber: int = 1
+var playerNumber: int = 1
 
 var hammersmash = load("res://Sound Effects/hammersmash.mp3")
 var swordswipe  = load("res://Sound Effects/swordswipe.mp3")
@@ -57,12 +57,12 @@ enum WeaponState{
 }
 
 var weapons = {
-	short1 = {
+	short2 = {
 		charge = 7.5,
 		attack = 10,
 		cooldown = 15
 	},
-	short2 = {
+	short1 = {
 		charge = 5,
 		attack = 15,
 		cooldown = 5
@@ -86,6 +86,10 @@ var didAttack = false
 
 var forcedDirection = 0
 
+
+var inputNum = str(1)
+var inNum = 1
+
 class otherPlayer:
 	var pos: Vector2
 	var facing: int
@@ -93,10 +97,28 @@ class otherPlayer:
 func _ready() -> void:
 	pnum = str(playerNumber)
 
+
+	if(name == "Player") :
+		inputNum = str(1)
+		inNum = 1
+		print(Global.playerNumber)
+		playerNumber = Global.playerNumber
+	else:
+		inputNum = str(2)
+		inNum = 2
+		playerNumber = Global.player2Number
+	
+	pnum = str(playerNumber)
+	
+	
 	# fixes shader param issue
 	$AnimatedSprite2D.material = $AnimatedSprite2D.material.duplicate()
 
 	$AnimatedSprite2D.play("idle" + pnum)
+	
+	
+	
+
 
 	var error = socket.connect_to_url("ws://localhost:8080")
 
@@ -116,7 +138,7 @@ func getCollider():
 
 func fight():
 	if currentAttack == Attacks.NONE and weaponState == WeaponState.READY:
-		if Input.is_action_just_pressed("short" + pnum):
+		if Input.is_action_just_pressed("short" + inputNum):
 			$AnimatedSprite2D.play("short" + pnum)
 			startup.reset(weapons["short" + pnum].charge)
 			currentAttack = Attacks.SHORT
@@ -124,7 +146,7 @@ func fight():
 			forcedDirection = 1 if $AnimatedSprite2D.flip_h else -1
 			print("charging")
 
-		if Input.is_action_just_pressed("range" + pnum):
+		if Input.is_action_just_pressed("range" + inputNum):
 			$AnimatedSprite2D.play("range" + pnum)
 			startup.reset(weapons["range" + pnum].charge)
 			forcedDirection = 1 if $AnimatedSprite2D.flip_h else -1
@@ -156,7 +178,7 @@ func fight():
 			if not player == null and not currentAttack == Attacks.NONE and not didAttack:
 				didAttack = true
 
-				Global.remove_hp(1 if playerNumber == 2 else 2, 3)
+				Global.remove_hp(1 if inNum == 2 else 2, 3)
 				
 
 				player.targetVel.y = -1500
@@ -215,11 +237,17 @@ func _physics_process(delta: float) -> void:
 	end.update(delta)
 	active.update(delta)
 	stun.update(delta)
+	
+	if(name == "Player") :
+		modulate = Color8(100, 100, 255)
+	else:
+		modulate = Color8(255, 100, 100, 255)
+
 
 	if stun.can():
 		fight()
 
-	var direction = Input.get_axis("left" + pnum, "right" + pnum) * speed
+	var direction = Input.get_axis("left" + inputNum, "right" + inputNum) * speed
 
 	if not stun.can():
 		direction = 0
@@ -253,7 +281,7 @@ func _physics_process(delta: float) -> void:
 		$Weapon.position.x = -4
 
 
-	if Input.is_action_just_pressed("up" + pnum):
+	if Input.is_action_just_pressed("up" + inputNum):
 		if is_on_floor():
 			isJumping = true
 			$AnimatedSprite2D.play("jump" + pnum)
@@ -265,7 +293,7 @@ func _physics_process(delta: float) -> void:
 			canDoubleJump = false
 			velocity.y = doubleJumpSize
 			$"../AudioStreamPlayer2D".play()
-	if not is_on_floor() and Input.is_action_just_released("up" + pnum) and canDoubleJump:
+	if not is_on_floor() and Input.is_action_just_released("up" + inputNum) and canDoubleJump:
 		velocity.y *= 0.5
 
 	velocity.y += gravity * delta

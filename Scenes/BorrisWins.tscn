@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dkgbqa2avgsjk"]
 
-[ext_resource type="Script" uid="uid://b8wqsa1mdb50h" path="res://Scripts/win.gd" id="1_v4kcx"]
+[ext_resource type="Script" uid="uid://b5rp23fr00lo2" path="res://Scripts/win.gd" id="1_v4kcx"]
 [ext_resource type="Texture2D" uid="uid://crti8ml8blv0o" path="res://Art/Boris Wins.png" id="1_vcm4s"]
 [ext_resource type="Texture2D" uid="uid://dqj5mdfmkkn42" path="res://Art/Easter Egg.png" id="3_0nv6o"]
 [ext_resource type="AudioStream" uid="uid://bl7i6rwtl4fja" path="res://Sound Effects/explode.mp3" id="4_5q2ct"]

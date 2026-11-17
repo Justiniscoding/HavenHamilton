@@ -29,7 +29,7 @@ func hpChange(playerNum, _amount):
 	await tween.finished
 	if Global.p1hp <= 0:
 		get_tree().change_scene_to_file("res://Scenes/ReneeWins.tscn")
-	if Global.p2hp <= 0:
+	elif Global.p2hp <= 0:
 		get_tree().change_scene_to_file("res://Scenes/BorrisWins.tscn")
 
 var startDelay = 2

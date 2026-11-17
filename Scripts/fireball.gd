@@ -32,6 +32,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	timer += delta
+	
+	
 
 	if timer > 1.5:
 		$AnimatedSprite2D.play("explode")
@@ -45,19 +47,26 @@ func _physics_process(delta: float) -> void:
 		return
 
 	if has_overlapping_bodies():
+		
+		
 		for body in get_overlapping_bodies():
-			if body.name == "Player2":
-				$AnimatedSprite2D.play("explode")
-				if middleAudio:
-					middleAudio.stop()
-				playAudio(end, 10)
-				set_physics_process(false)
-				body.targetVel.x = 400 * direction
-				Global.remove_hp(2, 5)
-				$AnimatedSprite2D.connect("animation_finished", func():
-					# await get_tree().create_timer(1.25).timeout
-					queue_free())
-				return
+			var playerNumber
+			if body.name == "Player":
+				playerNumber = 1
+			else:				
+				playerNumber = 2
+			#if body.name == "Player2":
+			$AnimatedSprite2D.play("explode")
+			if middleAudio:
+				middleAudio.stop()	
+			playAudio(end, 10)
+			set_physics_process(false)
+			body.targetVel.x = 400 * direction
+			Global.remove_hp(playerNumber, 5)
+			$AnimatedSprite2D.connect("animation_finished", func():
+				# await get_tree().create_timer(1.25).timeout
+				queue_free())
+			return
 
 
 	position.x += direction * speed * delta

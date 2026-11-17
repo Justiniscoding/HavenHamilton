@@ -7,6 +7,6 @@ func _ready() -> void:
 			tween.tween_property($Sprite2D, "position:x", 0.0, 2.0)
 			tween.play()
 			await get_tree().create_timer(6).timeout
-		get_tree().change_scene_to_file("res://Scenes/menu.tscn")
+		get_tree().change_scene_to_file("res://Scenes/PlayerSelect.tscn")
 		Global.p1hp = 100
 		Global.p2hp = 100)
