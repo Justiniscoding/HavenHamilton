@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Haven Hamilton"
+config/name="Time Token PVP"
 run/main_scene="uid://dhafs15qqx18u"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
