@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var playerNumber: int = 1
+var playerNumber: int = 1
 
 var hammersmash = load("res://Sound Effects/hammersmash.mp3")
 var swordswipe  = load("res://Sound Effects/swordswipe.mp3")
@@ -89,20 +89,27 @@ var inNum = 1
 
 
 func _ready() -> void:
+	if(name == "Player") :
+		inputNum = str(1)
+		inNum = 1
+		print(Global.playerNumber)
+		playerNumber = Global.playerNumber
+	else:
+		inputNum = str(2)
+		inNum = 2
+		playerNumber = Global.player2Number
+	
 	pnum = str(playerNumber)
-
+	
+	
 	# fixes shader param issue
 	$AnimatedSprite2D.material = $AnimatedSprite2D.material.duplicate()
 
 	$AnimatedSprite2D.play("idle" + pnum)
 	
 	
-	if(name == "Player") :
-		inputNum = str(1)
-		inNum = 1
-	else:
-		inputNum = str(2)
-		inNum = 2
+	
+
 
 func getCollider():
 	if $Weapon.has_overlapping_bodies():
