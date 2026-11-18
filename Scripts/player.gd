@@ -13,6 +13,7 @@ var speed = 250
 var jump = -400
 var doubleJumpSize = jump * 0.75
 
+
 var canDoubleJump = false
 
 var pnum
@@ -58,17 +59,19 @@ var weapons = {
 	short2 = {
 		charge = 7.5,
 		attack = 10,
-		cooldown = 15
+		cooldown = 15,
+		damage = 4.5
 	},
 	short1 = {
 		charge = 5,
 		attack = 15,
-		cooldown = 5
+		cooldown = 5,
+		damage = 4
 	},
 	range2 = {
 		charge = 3,
 		attack = 12,
-		cooldown = 36
+		cooldown = 30
 	},
 	range1 = {
 		charge = 7,
@@ -162,7 +165,7 @@ func fight():
 			if not player == null and not currentAttack == Attacks.NONE and not didAttack:
 				didAttack = true
 
-				Global.remove_hp(1 if inNum == 2 else 2, 3)
+				Global.remove_hp(1 if inNum == 2 else 2, weapons["short" + pnum].damage)
 				
 
 				player.targetVel.y = -1500
