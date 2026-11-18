@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://dsmpe36mk8vj7" path="res://Art/Renee Wins.png" id="1_dnio8"]
 [ext_resource type="Script" uid="uid://b8wqsa1mdb50h" path="res://Scripts/win.gd" id="1_w8qh8"]
+[ext_resource type="Texture2D" uid="uid://dqj5mdfmkkn42" path="res://Art/Easter Egg.png" id="3_kw5cb"]
+[ext_resource type="AudioStream" uid="uid://e2oxke2bj6y3" path="res://Sound Effects/lightning.mp3" id="4_ta6db"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w8qh8"]
 atlas = ExtResource("1_dnio8")
@@ -61,7 +63,7 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Node2D" type="Node2D" unique_id=149586615]
+[node name="Node2D2" type="Node2D" unique_id=149586615]
 script = ExtResource("1_w8qh8")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=480088947]
@@ -76,3 +78,11 @@ sprite_frames = SubResource("SpriteFrames_4042a")
 autoplay = "default"
 frame = 4
 frame_progress = 1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1409227072]
+position = Vector2(-1000, 0)
+texture = ExtResource("3_kw5cb")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=715118394]
+stream = ExtResource("4_ta6db")
+autoplay = true

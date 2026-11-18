@@ -693,6 +693,11 @@ position = Vector2(1.9999981, 6)
 rotation = 2.7925267
 shape = SubResource("CapsuleShape2D_xs5hf")
 
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Weapon" unique_id=1476961588]
+position = Vector2(-4.0000005, 17)
+rotation = 1.7453293
+shape = SubResource("CapsuleShape2D_xs5hf")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=303932097]
 material = SubResource("ShaderMaterial_vgqql")
 position = Vector2(7, 0)

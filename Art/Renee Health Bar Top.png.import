@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d235khmttr0oe"
-path="res://.godot/imported/Start Loading Bar Vine.png-25d25f5f84405763785eceedff9b3a96.ctex"
+uid="uid://dp6ytnjnvsl6"
+path="res://.godot/imported/Renee Health Bar Top.png-7483c333ab170facbb6ee3fd20b56060.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Start Loading Bar Vine.png"
-dest_files=["res://.godot/imported/Start Loading Bar Vine.png-25d25f5f84405763785eceedff9b3a96.ctex"]
+source_file="res://Art/Renee Health Bar Top.png"
+dest_files=["res://.godot/imported/Renee Health Bar Top.png-7483c333ab170facbb6ee3fd20b56060.ctex"]
 
 [params]
 
