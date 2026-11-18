@@ -15,8 +15,6 @@ var doubleJumpSize = jump * 0.75
 
 var canDoubleJump = false
 
-var socket = WebSocketPeer.new()
-
 var pnum
 
 class timer:
@@ -90,6 +88,8 @@ var forcedDirection = 0
 var inputNum = str(1)
 var inNum = 1
 
+var ignoreInputs := false
+
 class otherPlayer:
 	var pos: Vector2
 	var facing: int
@@ -98,34 +98,29 @@ func _ready() -> void:
 	pnum = str(playerNumber)
 
 
-	if(name == "Player") :
-		inputNum = str(1)
-		inNum = 1
-		print(Global.playerNumber)
-		playerNumber = Global.playerNumber
+	if Global.multiplayer:
+		if name == "Player":
+			pnum = "1"
+		else:
+			ignoreInputs = true
+			pnum = "2"
 	else:
-		inputNum = str(2)
-		inNum = 2
-		playerNumber = Global.player2Number
-	
-	pnum = str(playerNumber)
+		if name == "Player":
+			inputNum = str(1)
+			inNum = 1
+			playerNumber = Global.playerNumber
+		else:
+			inputNum = str(2)
+			inNum = 2
+			playerNumber = Global.player2Number
+		
+		pnum = str(playerNumber)
 	
 	
 	# fixes shader param issue
 	$AnimatedSprite2D.material = $AnimatedSprite2D.material.duplicate()
 
 	$AnimatedSprite2D.play("idle" + pnum)
-	
-	
-	
-
-
-	var error = socket.connect_to_url("ws://localhost:8080")
-
-	if error == OK:
-		print("connected to websocket")
-	else:
-		push_error("error connecting to websocket")
 
 func getCollider():
 	if $Weapon.has_overlapping_bodies():
@@ -222,34 +217,25 @@ func fight():
 
 var isJumping = false
 
-func _process(_delta: float) -> void:
-	socket.poll()
-	var state = socket.get_ready_state()
-
-	if state == WebSocketPeer.STATE_OPEN:
-		while socket.get_available_packet_count():
-			var packet = socket.get_packet()
-			if socket.was_string_packet():
-				print(packet.get_string_from_utf8())
-
 func _physics_process(delta: float) -> void:
-	startup.update(delta)
-	end.update(delta)
-	active.update(delta)
-	stun.update(delta)
+	if not ignoreInputs:
+		startup.update(delta)
+		end.update(delta)
+		active.update(delta)
+		stun.update(delta)
 	
-	if(name == "Player") :
+	if name == "Player":
 		modulate = Color8(100, 100, 255)
 	else:
 		modulate = Color8(255, 100, 100, 255)
 
 
-	if stun.can():
+	if stun.can() and not ignoreInputs:
 		fight()
 
 	var direction = Input.get_axis("left" + inputNum, "right" + inputNum) * speed
 
-	if not stun.can():
+	if not stun.can() or ignoreInputs:
 		direction = 0
 
 	if not is_on_floor():
@@ -281,7 +267,7 @@ func _physics_process(delta: float) -> void:
 		$Weapon.position.x = -4
 
 
-	if Input.is_action_just_pressed("up" + inputNum):
+	if Input.is_action_just_pressed("up" + inputNum) and not ignoreInputs:
 		if is_on_floor():
 			isJumping = true
 			$AnimatedSprite2D.play("jump" + pnum)
