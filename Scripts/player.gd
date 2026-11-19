@@ -13,6 +13,8 @@ var speed = 250
 var jump = -400
 var doubleJumpSize = jump * 0.75
 
+var addToSpriteName
+
 
 var canDoubleJump = false
 
@@ -97,10 +99,12 @@ func _ready() -> void:
 		inNum = 1
 		print(Global.playerNumber)
 		playerNumber = Global.playerNumber
+		addToSpriteName = ""
 	else:
 		inputNum = str(2)
 		inNum = 2
 		playerNumber = Global.player2Number
+		addToSpriteName = "2"
 	
 	pnum = str(playerNumber)
 	
@@ -108,7 +112,7 @@ func _ready() -> void:
 	# fixes shader param issue
 	$AnimatedSprite2D.material = $AnimatedSprite2D.material.duplicate()
 
-	$AnimatedSprite2D.play("idle" + pnum)
+	$AnimatedSprite2D.play("idle" + pnum + addToSpriteName)
 	
 	
 	
@@ -126,7 +130,7 @@ func getCollider():
 func fight():
 	if currentAttack == Attacks.NONE and weaponState == WeaponState.READY:
 		if Input.is_action_just_pressed("short" + inputNum):
-			$AnimatedSprite2D.play("short" + pnum)
+			$AnimatedSprite2D.play("short" + pnum + addToSpriteName)
 			startup.reset(weapons["short" + pnum].charge)
 			currentAttack = Attacks.SHORT
 			weaponState = WeaponState.CHARGING
@@ -134,7 +138,7 @@ func fight():
 			print("charging")
 
 		if Input.is_action_just_pressed("range" + inputNum):
-			$AnimatedSprite2D.play("range" + pnum)
+			$AnimatedSprite2D.play("range" + pnum + addToSpriteName)
 			startup.reset(weapons["range" + pnum].charge)
 			forcedDirection = 1 if $AnimatedSprite2D.flip_h else -1
 			currentAttack = Attacks.RANGED
@@ -215,10 +219,10 @@ func _physics_process(delta: float) -> void:
 	active.update(delta)
 	stun.update(delta)
 	
-	if(name == "Player") :
-		modulate = Color8(100, 100, 255)
-	else:
-		modulate = Color8(255, 100, 100, 255)
+	#if(name == "Player") :
+	#	modulate = Color8(100, 100, 255)
+	#else:
+	#	modulate = Color8(255, 100, 100, 255)
 
 
 	if stun.can():
@@ -239,11 +243,11 @@ func _physics_process(delta: float) -> void:
 
 	if direction != 0:
 		if is_on_floor() and currentAttack == Attacks.NONE and weaponState == WeaponState.READY and not didAttack:
-			$AnimatedSprite2D.play("run" + pnum)
+			$AnimatedSprite2D.play("run" + pnum + addToSpriteName)
 		velocity.x = lerp(velocity.x, direction, 0.15)
 	else:
 		if is_on_floor() and currentAttack == Attacks.NONE and weaponState == WeaponState.READY and not didAttack:
-			$AnimatedSprite2D.play("idle" + pnum)
+			$AnimatedSprite2D.play("idle" + pnum + addToSpriteName)
 		velocity.x = lerp(velocity.x, 0.0, 0.15)
 
 	if direction > 0 and forcedDirection != -1:
@@ -261,12 +265,12 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("up" + inputNum):
 		if is_on_floor():
 			isJumping = true
-			$AnimatedSprite2D.play("jump" + pnum)
+			$AnimatedSprite2D.play("jump" + pnum + addToSpriteName)
 			canDoubleJump = true
 			velocity.y = jump
 			$"../AudioStreamPlayer2D".play()
 		elif canDoubleJump:
-			$AnimatedSprite2D.play("double_jump" + pnum)
+			$AnimatedSprite2D.play("double_jump" + pnum + addToSpriteName)
 			canDoubleJump = false
 			velocity.y = doubleJumpSize
 			$"../AudioStreamPlayer2D".play()
