@@ -30,7 +30,7 @@ func init_multiplayer():
 
 	socket = WebSocketPeer.new()
 
-	var error = socket.connect_to_url("ws://Justins-Macbook-Air.local:8080")
+	var error = socket.connect_to_url("ws://10.5.33.222:8080")
 
 	if error == OK:
 		print("connected to websocket")
