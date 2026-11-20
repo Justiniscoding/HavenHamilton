@@ -3,6 +3,7 @@ extends CharacterBody2D
 var playerNumber: int = 1
 
 var hammersmash = load("res://Sound Effects/hammersmash.mp3")
+var jumpSound = load("res://Sound Effects/lumora_studios-pixel-jump-319167.mp3")
 var swordswipe  = load("res://Sound Effects/swordswipe.mp3")
 
 var fireballScene = preload("res://Scenes/fireball.tscn")
@@ -268,17 +269,24 @@ func _physics_process(delta: float) -> void:
 
 
 	if Input.is_action_just_pressed("up" + inputNum) and not ignoreInputs:
+		if is_on_floor() or canDoubleJump:
+			var audio = AudioStreamPlayer.new()
+			audio.stream = jumpSound
+			add_child(audio)
+
+			audio.play()
+			audio.connect("finished", func():
+				audio.queue_free())
+
 		if is_on_floor():
 			isJumping = true
 			$AnimatedSprite2D.play("jump" + pnum)
 			canDoubleJump = true
 			velocity.y = jump
-			$"../AudioStreamPlayer2D".play()
 		elif canDoubleJump:
 			$AnimatedSprite2D.play("double_jump" + pnum)
 			canDoubleJump = false
 			velocity.y = doubleJumpSize
-			$"../AudioStreamPlayer2D".play()
 	if not is_on_floor() and Input.is_action_just_released("up" + inputNum) and canDoubleJump:
 		velocity.y *= 0.5
 

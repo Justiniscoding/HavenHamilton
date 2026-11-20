@@ -1,3 +1,5 @@
+import {randomUUID} from "crypto";
+
 function messageToText(event: string, ...args: any[]): string {
 	let text = event;
 
@@ -8,23 +10,60 @@ function messageToText(event: string, ...args: any[]): string {
 	return text;
 }
 
-function emit(socket: Bun.ServerWebSocket<undefined>, event: string, ...args: any[]){
+interface SocketData {
+	id: string
+}
+
+function emit(socket: Bun.ServerWebSocket<SocketData>, event: string, ...args: any[]){
 	socket.send(messageToText(event, ...args));
 }
 
-function publish(socket: Bun.ServerWebSocket<undefined>, group: string, event: string, ...args: any[]){
+function publish(socket: Bun.ServerWebSocket<SocketData>, group: string, event: string, ...args: any[]){
 	socket.publish(group, messageToText(event, ...args));
 }
 
+// const rooms = {};
+
+
+interface PlayerPositions {
+	[key: string]: {
+		x: number,
+		y: number
+	}
+}
+
+const players: PlayerPositions = {
+
+};
+
 Bun.serve({
 	fetch(req, server) {
-		server.upgrade(req)
+		server.upgrade(req, {
+			data: {
+				id: randomUUID()
+			}
+		});
 	},
 	port: 8080,
 	websocket: {
+		data: {} as SocketData,
 		open(ws){
 			console.log("connection received from websocket")
-			ws.subscribe("findRooms");
+			// ws.subscribe("findRooms");
+
+			const playerX = Math.floor(Math.random() * 250);
+			const playerY = -50;
+
+			emit(ws, "inGame", playerX, playerY);
+
+			for(let playerId in players){
+				emit(ws, "newPlayer", playerId, players[playerId]?.x, players[playerId]?.y)
+			}
+
+			players[ws.data.id] = {x: playerX, y: playerY};
+
+			ws.subscribe("game");
+			publish(ws, "game", "newPlayer", ws.data.id, playerX, playerY);
 		},
 		message(ws, message){
 			if(typeof message !== "string"){
@@ -35,9 +74,24 @@ Bun.serve({
 			const type = messageParts[0];
 			const args = messageParts.slice(1);
 
-			if(type == "createRoom"){
-				publish(ws, "findRooms", "createRoom", args[0]);
+			// if(type == "createRoom"){
+			// 	publish(ws, "findRooms", "createRoom", args[0]);
+			// 	ws.subscribe(args[0] as string)
+			// 	rooms.push();
+			// }else if(type == "joinRoom"){
+			// 	ws.subscribe(args[0] as string);
+			// 	ws.unsubscribe("findRooms");
+			// 	publish(ws, args[0] as string, "gameStart");
+			// }else if(type == "move"){
+			// 	publish(ws, ws.subscriptions[0] ?? "", "move", ...args);
+			// }
+
+			if(type == "playerMove"){
+				publish(ws, "game", "playerMove", ws.data.id, args[0], args[1]);
 			}
+		},
+		close(ws){
+			delete players[ws.data.id];
 		}
 	}
 });

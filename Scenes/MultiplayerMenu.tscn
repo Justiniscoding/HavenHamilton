@@ -50,6 +50,7 @@ text = "Username:"
 
 [node name="LineEdit" type="LineEdit" parent="GUI/VBoxContainer2" unique_id=144369879]
 layout_mode = 2
+theme_override_font_sizes/font_size = 10
 placeholder_text = "..."
 
 [node name="OpenRooms" type="VBoxContainer" parent="GUI" unique_id=437505555]

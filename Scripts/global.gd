@@ -51,7 +51,7 @@ func on(event_name: String, callback: Callable):
 func emit(event_name: String, ...params):
 	var text = event_name
 	for param in params:
-		text += "\n" + param
+		text += "\n" + str(param)
 	socket.send_text(text)
 
 func _process(_delta: float) -> void:
@@ -65,6 +65,6 @@ func _process(_delta: float) -> void:
 				var content = packet.get_string_from_utf8().split("\n")
 				var title = content[0]
 
-				if events[title]:
+				if events.has(title):
 					for callback in events[title]:
 						callback.callv(content.slice(1))

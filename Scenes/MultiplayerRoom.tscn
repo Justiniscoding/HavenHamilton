@@ -18,8 +18,10 @@ offset_bottom = 40.0
 
 [node name="Label" type="Label" parent="VBoxContainer" unique_id=1294417698]
 layout_mode = 2
+theme_override_font_sizes/font_size = 10
 text = "Justin's Room"
 
 [node name="Button" type="Button" parent="VBoxContainer" unique_id=1349827729]
 layout_mode = 2
+theme_override_font_sizes/font_size = 10
 text = "Join"
