@@ -4,8 +4,9 @@
 [ext_resource type="Shader" uid="uid://p8227oh1i16q" path="res://Scenes/player.gdshader" id="2_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://qh0iy4ujoyt8" path="res://Art/Player 2.png" id="2_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://decyh63nmkwou" path="res://Art/Player 1.png" id="3_vgqql"]
-[ext_resource type="Texture2D" uid="uid://dkmwb63c5poef" path="res://Art/Player 1 ALT COLOUR.png" id="4_x3wgy"]
-[ext_resource type="Texture2D" uid="uid://ceh6fbct65dy6" path="res://Art/Player 2 ALT COLOUR.png" id="6_3smsa"]
+[ext_resource type="Texture2D" uid="uid://cstprtkjqu4i0" path="res://Art/Player 1 ALT COLOUR.png" id="4_x3wgy"]
+[ext_resource type="Texture2D" uid="uid://dgiy7xqw1hbs1" path="res://Art/Player 2 ALT COLOUR.png" id="6_3smsa"]
+[ext_resource type="Texture2D" uid="uid://dawse4oynglyh" path="res://Art/Phineas.png" id="7_3smsa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xs5hf"]
 size = Vector2(13.5, 28)
@@ -214,6 +215,14 @@ region = Rect2(32, 128, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_y6uwr"]
 atlas = ExtResource("2_cvnsp")
 region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2btx"]
+atlas = ExtResource("7_3smsa")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76dak"]
+atlas = ExtResource("7_3smsa")
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qavoy"]
 atlas = ExtResource("3_vgqql")
@@ -867,6 +876,17 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2btx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76dak")
+}],
+"loop": 1,
+"name": &"new_animation",
+"speed": 5.0
+}, {
+"frames": [{
 "duration": 0.25,
 "texture": SubResource("AtlasTexture_qavoy")
 }, {
@@ -1280,7 +1300,7 @@ shape = SubResource("CapsuleShape2D_xs5hf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=303932097]
 material = SubResource("ShaderMaterial_vgqql")
-position = Vector2(7, 0)
+position = Vector2(-4, -16)
 sprite_frames = SubResource("SpriteFrames_v0iea")
-animation = &"short12"
+animation = &"new_animation"
 offset = Vector2(-7, 0)

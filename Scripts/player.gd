@@ -108,6 +108,13 @@ func _ready() -> void:
 	
 	pnum = str(playerNumber)
 	
+	if playerNumber == 3:
+		$AnimatedSprite2D.position.x = -4
+		$AnimatedSprite2D.position.y = -16
+	else:
+		$AnimatedSprite2D.position.x = 7
+		$AnimatedSprite2D.position.y = 0
+	
 	
 	# fixes shader param issue
 	$AnimatedSprite2D.material = $AnimatedSprite2D.material.duplicate()

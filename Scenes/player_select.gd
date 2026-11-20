@@ -20,12 +20,16 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("right2"):
 		player2Num += 1
 	
-	if(abs(playerNum) % 2 == 0):
+	if(abs(playerNum) % 3 == 0):
+		otherPlayerNum = 3
+	elif(abs(playerNum) % 2 == 0):
 		otherPlayerNum = 2
 	else:
 		otherPlayerNum = 1
 		
-	if(abs(player2Num) % 2 == 0):
+	if(abs(player2Num) % 3 == 0):
+		otherPlayer2Num = 3	
+	elif(abs(player2Num) % 2 == 0):
 		otherPlayer2Num = 2
 	else:
 		otherPlayer2Num = 1

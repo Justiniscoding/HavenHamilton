@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://bx613aaaryoks" path="res://Art/Start Scene.png" id="2_4ph20"]
 [ext_resource type="Texture2D" uid="uid://decyh63nmkwou" path="res://Art/Player 1.png" id="2_5hknh"]
 [ext_resource type="Texture2D" uid="uid://qh0iy4ujoyt8" path="res://Art/Player 2.png" id="3_4ph20"]
-[ext_resource type="Texture2D" uid="uid://dkmwb63c5poef" path="res://Art/Player 1 ALT COLOUR.png" id="5_ygdr5"]
-[ext_resource type="Texture2D" uid="uid://ceh6fbct65dy6" path="res://Art/Player 2 ALT COLOUR.png" id="6_fvp1t"]
+[ext_resource type="Texture2D" uid="uid://cstprtkjqu4i0" path="res://Art/Player 1 ALT COLOUR.png" id="5_ygdr5"]
+[ext_resource type="Texture2D" uid="uid://dgiy7xqw1hbs1" path="res://Art/Player 2 ALT COLOUR.png" id="6_fvp1t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gh0eq"]
 shader = ExtResource("1_thimi")
@@ -1262,6 +1262,7 @@ scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_pntk1")
 animation = &"idle1"
 autoplay = "idle1"
+frame_progress = 0.56323266
 offset = Vector2(-7, 0)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1053819718]
