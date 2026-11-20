@@ -19,7 +19,7 @@ func _physics_process(_delta: float) -> void:
 			#if body.name == "Player" and not didStunm:
 			if not didStunm:
 				didStunm = true
-				Global.remove_hp(playerNumber, 5)
+				Global.remove_hp(playerNumber, 3)
 				body.stun.reset(45)
 
 	if not $AnimatedSprite2D.is_playing():

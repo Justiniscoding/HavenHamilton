@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b2jlfrmpdpsjn"]
 
-[ext_resource type="Script" uid="uid://bf4x2q5l3sc7g" path="res://Scripts/lightning.gd" id="1_wca04"]
+[ext_resource type="Script" uid="uid://dmtf0b8bmpox8" path="res://Scripts/lightning.gd" id="1_wca04"]
 [ext_resource type="Texture2D" uid="uid://dbketk15xrekl" path="res://Art/Lightning Bolt.png" id="2_7ouyy"]
 [ext_resource type="AudioStream" uid="uid://e2oxke2bj6y3" path="res://Sound Effects/lightning.mp3" id="3_41j16"]
 

@@ -62,7 +62,7 @@ func _physics_process(delta: float) -> void:
 			playAudio(end, 10)
 			set_physics_process(false)
 			body.targetVel.x = 400 * direction
-			Global.remove_hp(playerNumber, 5)
+			Global.remove_hp(playerNumber, 3)
 			$AnimatedSprite2D.connect("animation_finished", func():
 				# await get_tree().create_timer(1.25).timeout
 				queue_free())
