@@ -30,8 +30,8 @@ func _process(delta: float) -> void:
 	else:
 		otherPlayer2Num = 1
 		
-	$CharacterBody2D/AnimatedSprite2D.play("idle" + str(otherPlayer2Num))
-	$CharacterBody2D2/AnimatedSprite2D.play("idle" + str(otherPlayerNum))	
+	$CharacterBody2D/AnimatedSprite2D2.play("idle" + str(otherPlayer2Num) + "2")
+	$CharacterBody2D2/AnimatedSprite2D2.play("idle" + str(otherPlayerNum))	
 	
 	if Input.is_action_just_pressed("Set1"):
 		Global.playerNumber = otherPlayerNum

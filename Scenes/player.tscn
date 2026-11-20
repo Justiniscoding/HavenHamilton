@@ -1161,19 +1161,19 @@ animations = [{
 "duration": 0.5,
 "texture": SubResource("AtlasTexture_hfnjl")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_uxqhi")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_vbb78")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_7anab")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_q7v0o")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_gc6xv")
 }],
 "loop": 0,
@@ -1282,5 +1282,5 @@ shape = SubResource("CapsuleShape2D_xs5hf")
 material = SubResource("ShaderMaterial_vgqql")
 position = Vector2(7, 0)
 sprite_frames = SubResource("SpriteFrames_v0iea")
-animation = &"short22"
+animation = &"short12"
 offset = Vector2(-7, 0)
