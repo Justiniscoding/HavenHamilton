@@ -87,7 +87,7 @@ Bun.serve({
 			// }
 
 			if(type == "playerMove"){
-				publish(ws, "game", "playerMove", ws.data.id, args[0], args[1]);
+				publish(ws, "game", "playerMove", ws.data.id, ...args);
 			}
 		},
 		close(ws){

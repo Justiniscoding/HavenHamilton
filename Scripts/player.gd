@@ -84,6 +84,7 @@ var weaponState = WeaponState.READY
 var didAttack = false
 
 var forcedDirection = 0
+var facing = 1
 
 
 var inputNum = str(1)
@@ -260,8 +261,10 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.flip_h = true
 		$AnimatedSprite2D.offset.x = 7
 		$Weapon.scale.x = -1
+		facing = -1
 		$Weapon.position.x = 18
 	elif direction < 0 and forcedDirection != 1:
+		facing = 1
 		$AnimatedSprite2D.flip_h = false
 		$AnimatedSprite2D.offset.x = -7
 		$Weapon.scale.x = 1

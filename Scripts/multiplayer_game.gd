@@ -6,8 +6,13 @@ const dummyPlayerScene = preload("res://Scenes/dummy_player.tscn")
 var player
 var otherPlayers
 
-func playerMove(id: String, x: String, y: String) -> void:
-	get_node("OtherPlayers/" + id).targetPosition = Vector2(int(x), int(y))
+func playerMove(id: String, x: String, y: String, facing: String, anim: String) -> void:
+	var otherPlayer = get_node("OtherPlayers/" + id)
+	otherPlayer.targetPosition = Vector2(int(x), int(y))
+	otherPlayer.facing = facing
+
+	if not (otherPlayer.get_node("AnimatedSprite2D").animation.begins_with("double_jump") and anim.begins_with("double_jump")):
+		otherPlayer.get_node("AnimatedSprite2D").play(anim)
 
 func _ready() -> void:
 	Global.on("inGame", func(x, y):
@@ -31,4 +36,7 @@ func _process(delta: float) -> void:
 
 	if lastUpdate >= 1 / 20.0:
 		lastUpdate = 0
-		Global.emit("playerMove", player.position.x, player.position.y)
+
+		var anim = player.get_node("AnimatedSprite2D").animation
+
+		Global.emit("playerMove", player.position.x, player.position.y, player.facing, anim)
